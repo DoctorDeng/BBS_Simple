@@ -37,10 +37,8 @@
     	如此一来，如果你正在考虑服务层中是该用@Component还是@Service，那@Service显然是更好的选择。
     	同样的，就像前面说的那样， @Repository已经能在持久化层中进行异常转换时被作为标记使用了。”
      -->
-    <context:component-scan base-package="vip.doctordeng.bbs">
-    	<context:exclude-filter type="annotation" expression=""/>
-    </context:component-scan>
-    <!-- <context:component-scan base-package="com.doctor.service"></context:component-scan> -->
+    <context:component-scan base-package="vip.doctordeng.bbs.dao" />
+    <context:component-scan base-package="vip.doctordeng.bbs.service" />
     
     <!-- 加载jdbc属性文件到上下文 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
