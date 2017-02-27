@@ -1,5 +1,12 @@
 package vip.doctordeng.bbs.module;
-
+/**
+ * 
+ * @ClassName:  TopicModule   
+ * @Description:TODO 帖子实体类
+ * @author: DoctorDeng
+ * @date:   2017年2月27日 下午9:39:46   
+ *
+ */
 public class TopicModule {
 	private Integer  topic_id;
 	private String   topic_intruction;

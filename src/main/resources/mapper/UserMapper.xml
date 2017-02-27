@@ -3,4 +3,5 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 将Mapper和对应的Dao绑定 -->
 <mapper namespace="vip.doctordeng.bbs.dao.UserDao">
+	
 </mapper>	

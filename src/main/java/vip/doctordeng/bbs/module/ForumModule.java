@@ -1,5 +1,12 @@
 package vip.doctordeng.bbs.module;
-
+/**
+ * 
+ * @ClassName:  ForumModule   
+ * @Description:TODO 板块实体类
+ * @author: DoctorDeng  
+ * @date:   2017年2月27日 下午9:37:34   
+ *
+ */
 public class ForumModule {
 	private Integer fornum_id;
 	private String  fornum_name;

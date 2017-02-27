@@ -1,5 +1,12 @@
 package vip.doctordeng.bbs.module;
-
+/**
+ * 
+ * @ClassName:  UserModule   
+ * @Description:TODO 用户实体类
+ * @author: DoctorDeng
+ * @date:   2017年2月27日 下午9:39:59   
+ *
+ */
 public class UserModule {
 	private Integer user_id;
 	private String  user_password;
