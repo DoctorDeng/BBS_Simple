@@ -26,7 +26,7 @@
     <mvc:annotation-driven />
     
     <!-- spring静态资源配置 -->
-	<mvc:resources mapping="/resources/**" location="/WEB-INF/jsp/common/"></mvc:resources>
+	<mvc:resources mapping="/resources/**" location="/WEB-INF/static/"></mvc:resources>
     <!-- 视图转换器 ViewResolver
     	一个 DispatcherServlet 可以配置多个  ViewResolver
     	它们通过使用 order 属性排序
