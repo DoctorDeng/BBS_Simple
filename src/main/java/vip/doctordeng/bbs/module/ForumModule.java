@@ -12,7 +12,11 @@ public class ForumModule {
 	private String  fornum_name;
 	private String  forum_intruction;
 	private Integer user_id;
-	private Integer fornum_parent_id;
+	private Integer forum_parent_id;
+	/**
+	 * 板块状态: 0 正常。1 被删除；
+	 */
+	private Integer forum_status;
 	private String  prop1;
 	private String  prop2;
 	private String  prop3;
@@ -23,7 +27,6 @@ public class ForumModule {
 	private String  prop8;
 	private String  prop9;
 	private String  prop10;
-	
 	public Integer getFornum_id() {
 		return fornum_id;
 	}
@@ -48,11 +51,17 @@ public class ForumModule {
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
-	public Integer getFornum_parent_id() {
-		return fornum_parent_id;
+	public Integer getForum_parent_id() {
+		return forum_parent_id;
 	}
-	public void setFornum_parent_id(Integer fornum_parent_id) {
-		this.fornum_parent_id = fornum_parent_id;
+	public void setForum_parent_id(Integer forum_parent_id) {
+		this.forum_parent_id = forum_parent_id;
+	}
+	public Integer getForum_status() {
+		return forum_status;
+	}
+	public void setForum_status(Integer forum_status) {
+		this.forum_status = forum_status;
 	}
 	public String getProp1() {
 		return prop1;
@@ -114,4 +123,5 @@ public class ForumModule {
 	public void setProp10(String prop10) {
 		this.prop10 = prop10;
 	}
+
 }
