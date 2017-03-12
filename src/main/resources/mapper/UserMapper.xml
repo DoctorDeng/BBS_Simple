@@ -120,7 +120,7 @@
 		SELECT
 		<include refid="defaultUserSql" />
 		FROM user
-		<trim prefix="WHERE" prefixOverrides="AND|OR">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
 			<if test="user_id != null"> OR user_id = #{user_id}</if>
 			<if test="user_account != null and user_account != '' "> OR user_account = #{user_account}</if>
 			<if test="user_email != null and user_email != '' ">OR user_email = #{user_email}</if>
