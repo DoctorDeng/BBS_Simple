@@ -3,4 +3,82 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 将Mapper和对应的Dao绑定 -->
 <mapper namespace="vip.doctordeng.bbs.dao.ReplyDao">
+	<sql id="defaultReplySql">
+		reply_id, 
+		topic_id, 
+		reply_content, 
+		reply_time, 
+		user_id, 
+		reply_status,
+		prop1,
+		prop2,
+		prop3,
+		prop4,
+		prop5,
+		prop6,
+		prop7,
+		prop8,
+		prop9,
+		prop10
+	</sql>
+	
+	<sql id="insertReplySql">
+		topic_id, 
+		reply_content, 
+		user_id, 
+		reply_user_id, 
+		prop1,
+		prop2,
+		prop3,
+		prop4,
+		prop5,
+		prop6,
+		prop7,
+		prop8,
+		prop9,
+		prop10
+	</sql>
+	
+	<insert id="insertReply" parameterType="ReplyModule">
+		INSERT INTO reply (<include refid="insertReplySql" />)
+		VALUES (
+			#{topic_id},
+			#{reply_content},
+			#{user_id},
+			#{reply_user_id},
+			#{prop1},
+			#{prop2},
+			#{prop3},
+			#{prop4},
+			#{prop5},
+			#{prop6},
+			#{prop7},
+			#{prop8},
+			#{prop9},
+			#{prop10}	
+		)
+	</insert>
+	
+	<select id="listReplyByCondition" parameterType="Map">
+		SELECT <include refid="defaultReplySql" />
+		FROM reply
+		<where>
+			<if test="topic_id != null">
+				AND topic_id = #{topic_id}
+			</if>
+			<if test="reply_content != null and reply_content != '' ">
+				<bind name="content" value="'%' + reply_content + '%'"/>
+				AND reply_content like #{content}
+			</if>
+			<if test="user_id != null">
+				AND user_id = #{user_id}
+			</if>
+			<if test="reply_user_id != null">
+				AND reply_user_id = #{reply_user_id}
+			</if>
+			<if test="reply_status != null">
+				AND reply_status = #{reply_status}
+			</if>
+		</where>		
+	</select>
 </mapper>

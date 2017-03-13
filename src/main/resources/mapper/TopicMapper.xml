@@ -3,4 +3,44 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 将Mapper和对应的Dao绑定 -->
 <mapper namespace="vip.doctordeng.bbs.dao.TopicDao">
+	<sql id="defaultTopicSql">
+		topic_id,
+		topic_intruction,
+		topic_title,
+		topic_publish_time,
+		topic_content,
+		topic_type,
+		topic_view_num,
+		topic_topic_status,
+		topic_good_num,
+		user_id,
+		forum_id,
+		prop1,
+		prop2,
+		prop3,
+		prop4,
+		prop5,
+		prop6,
+		prop7,
+		prop8,
+		prop9,
+		prop10
+	</sql>
+	<sql id="insertTopicSql">
+		topic_intruction,
+		topic_title,
+		topic_content,
+		user_id,
+		forum_id,
+		prop1,
+		prop2,
+		prop3,
+		prop4,
+		prop5,
+		prop6,
+		prop7,
+		prop8,
+		prop9,
+		prop10
+	</sql>
 </mapper>

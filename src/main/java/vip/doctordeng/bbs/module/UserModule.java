@@ -2,7 +2,6 @@ package vip.doctordeng.bbs.module;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.extern.log4j.Log4j;
 
 /**
  * 
