@@ -1,5 +1,7 @@
 package vip.doctordeng.bbs.service;
 
-public class UserService {
+import vip.doctordeng.bbs.module.UserModule;
 
+public interface UserService {
+	public UserModule getUserById(final Integer userId);
 }

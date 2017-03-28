@@ -8,4 +8,5 @@ import vip.doctordeng.bbs.module.TopicModule;
 public interface TopicDao {
 	int insertTopic(TopicModule topicModule);
 	List<TopicModule> listTopicByCondition(Map condition);
+	int updateTopicByCondition(Map condition);
 }

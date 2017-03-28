@@ -1,5 +1,5 @@
 package vip.doctordeng.bbs.service;
 
-public class ForumService {
-
+public interface ForumService {
+	
 }

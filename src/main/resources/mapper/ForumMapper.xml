@@ -40,7 +40,7 @@
 		forum_status = 0
 	</sql>
 
-	<insert id="insertForum" parameterType="formModule">
+	<insert id="insertForum" parameterType="ForumModule">
 		INSERT INTO forum (<include refid="insertForumSql" />)
 		VALUES(
 			#{forum_name},
@@ -80,36 +80,23 @@
    		 WHERE forum_id = #{forum_id}
 	</update>
 
-	<select id="listForumByCondition" parameterType="Map"
-		resultType="formModule">
+	<select id="listForumByCondition" parameterType="Map" resultType="ForumModule">
 		SELECT
 		<include refid="defaultForumSql" />
 		FROM forum
 		<where>
-			<choose>
-				<when test="searchWay == 'listUserForum' ">
-					AND user_id = #{user_id}
-					AND
-					<include refid="defaultForumStatusSql" />
-				</when>
-				<when test="searchWay == 'listAllForum' ">
-					AND
-					<include refid="defaultForumStatusSql" />
-				</when>
-				<when test="searchWay == 'listForumChild' ">
-					AND forum_parent_id = #{forum_id}
-					AND
-					<include refid="defaultForumStatusSql" />
-				</when>
-				<when test="seachWay == 'listForumAndChild' ">
-					AND forum_parent_id = #{forum_id}
-					OR forum_id = #{forum_id}
-				</when>
-				<when test="seachWay == '' or searchWay == null">
-					AND forum_id = 0
-				</when>
-				<!-- <when test="searchWay == 'listInvalidForum' "> </when> -->
-			</choose>
+			<if test="user_id != null">
+				AND user_id = #{user_id}
+			</if>
+			<if test="forum_parent_id != null">
+				AND forum_parent_id = #{forum_parent_id}
+			</if>
+			<if test="forum_id != null">
+				AND forum_id = #{forum_id}
+			</if>
+			<if test="forum_status != null">
+				AND forum_status = #{forum_status}
+			</if>
 		</where>
 	</select>
 </mapper>
