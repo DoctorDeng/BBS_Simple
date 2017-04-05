@@ -3,7 +3,7 @@ package vip.doctordeng.bbs.dao;
 import java.util.List;
 import java.util.Map;
 
-import vip.doctordeng.bbs.module.UserModule;
+import vip.doctordeng.bbs.pojo.entity.UserEntity;
 
 /**
  * 
@@ -14,8 +14,8 @@ import vip.doctordeng.bbs.module.UserModule;
  *
  */
 public interface UserDao {
-	int insertUser(UserModule userModule);
+	int insertUser(UserEntity userModule);
 	int updateUserByCondition(Map condition);
-	List<UserModule> listUserByCondition(Map condition);
-	UserModule getUserByCondition(Map condition);
+	List<UserEntity> listUserByCondition(Map condition);
+	UserEntity getUserByCondition(Map condition);
 }

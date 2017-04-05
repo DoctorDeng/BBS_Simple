@@ -43,7 +43,7 @@
 	prop9,
 	prop10
 	</sql>
-	<insert id="insertUser" parameterType="userModule">
+	<insert id="insertUser" parameterType="UserEntity">
 		INSERT INTO user
 		(<include refid="insertUserSql" />)
 		VALUES (
@@ -63,7 +63,7 @@
 			#{prop10}
 		)
 	</insert>
-	<update id="updateUserByCondition" parameterMap="Map">
+	<update id="updateUserByCondition" parameterType="Map">
 	UPDATE user
 	<set>
 		<if test="user_password != null and  user_password != '' ">user_password = MD5(#{user_password}),</if>
@@ -87,7 +87,7 @@
 		<if test="prop10 != null">prop10=#{prop10}</if>
 	</set>
 	</update>
-	<select id="listUserByCondition" resultType="userModule">
+	<select id="listUserByCondition" resultType="UserEntity">
 		SELECT 
 		<include refid="defaultUserSql" />
 		FROM user
@@ -116,7 +116,7 @@
 				<when test="">
 				</when> -->
 	</select>
-	<select id="getUserByCondition">
+	<select id="getUserByCondition" resultType="UserEntity">
 		SELECT
 		<include refid="defaultUserSql" />
 		FROM user

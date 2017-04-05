@@ -64,7 +64,7 @@
 		) 
 	</insert>
 	
-	<select id="listTopicByCondition" parameterType="Map">
+	<select id="listTopicByCondition" parameterType="Map" resultType="TopicEntity">
 		SELECT <include refid="defaultTopicSql" />
 		FROM topic
 		<where>

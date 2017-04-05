@@ -39,7 +39,7 @@
 		prop10
 	</sql>
 	
-	<insert id="insertReply" parameterType="ReplyModule">
+	<insert id="insertReply" parameterType="ReplyEntity">
 		INSERT INTO reply (<include refid="insertReplySql" />)
 		VALUES (
 			#{topic_id},
@@ -59,7 +59,7 @@
 		)
 	</insert>
 	
-	<select id="listReplyByCondition" parameterType="Map">
+	<select id="listReplyByCondition" parameterType="Map" resultType="ReplyEntity">
 		SELECT <include refid="defaultReplySql" />
 		FROM reply
 		<where>

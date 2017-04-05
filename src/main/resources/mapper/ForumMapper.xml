@@ -40,7 +40,7 @@
 		forum_status = 0
 	</sql>
 
-	<insert id="insertForum" parameterType="ForumModule">
+	<insert id="insertForum" parameterType="ForumEntity">
 		INSERT INTO forum (<include refid="insertForumSql" />)
 		VALUES(
 			#{forum_name},
@@ -80,7 +80,7 @@
    		 WHERE forum_id = #{forum_id}
 	</update>
 
-	<select id="listForumByCondition" parameterType="Map" resultType="ForumModule">
+	<select id="listForumByCondition" parameterType="Map" resultType="ForumEntity">
 		SELECT
 		<include refid="defaultForumSql" />
 		FROM forum

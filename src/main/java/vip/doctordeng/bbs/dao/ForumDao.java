@@ -3,7 +3,7 @@ package vip.doctordeng.bbs.dao;
 import java.util.List;
 import java.util.Map;
 
-import vip.doctordeng.bbs.module.ForumModule;
+import vip.doctordeng.bbs.pojo.entity.ForumEntity;
 /**
  * 
  * @ClassName:  ForumDao   
@@ -13,8 +13,8 @@ import vip.doctordeng.bbs.module.ForumModule;
  *
  */
 public interface ForumDao {
-	int insertForum(ForumModule forumModule);
+	int insertForum(ForumEntity forumModule);
 	int updateForumByCondition(Map condition);
-	List<ForumModule> listForumByCondition(Map condition);
-	ForumModule getForumByCondition(Map condition);
+	List<ForumEntity> listForumByCondition(Map condition);
+	ForumEntity getForumByCondition(Map condition);
 }

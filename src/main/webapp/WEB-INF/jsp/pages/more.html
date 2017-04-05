@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>更多帖子</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link href="../css/titlebar.css" rel="stylesheet">
+    <link href="../css/search-result.css" rel="stylesheet"/>
+  </head>
+  
+  <body>
+    <jsp:include page="/pages/header.jsp"/>
+    
+    <div class="list-group search-list">
+      <a href="#" class="list-group-item active">
+        <!-- 提示 -->
+        抱歉！没有更多的结果
+      </a>
+      <!-- 帖子 -->
+      <a href="<%=path%>/pages/post.jsp?postId=<%=post.getId()%>&&page=1" class="list-group-item">
+        <h4 class="list-group-item-heading">
+        [主板块名称]
+        </h4>
+        帖子标题&nbsp;[直属板块标题]
+        <p class="text-right post-date">浏览量:3333&nbsp;评论量:33333&nbsp;发表日期:2017-06-05 02:30:30</p>
+      </a>
+    </div>
+
+    
+    <!-- 分页区 -->
+    <ul class="pagination pagination-lg page-float">
+      <li class=""><a href="">首页</a></li>
+      <li><a href="">上一页</a></li>
+      <!-- 其他页-->
+      <li><a href="">444</a></li>
+      <!-- 当前页 -->
+      <li class="active"><a href="" >3333</a></li>
+      <!-- 其他页-->
+      <li><a href="">22</a></li>
+      <li><a href="">下一页</a></li>
+      <li class="disabled"><a href="">尾页</a></li>
+    </ul>
+  </body>
+</html>
