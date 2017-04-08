@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Login {
 	@RequestMapping("/test")
 	public String test(){
-		return "index";
+		return "manage/manage_power";
 	}
 }

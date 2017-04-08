@@ -1,10 +1,9 @@
 package vip.doctordeng.bbs.service;
 
+import vip.doctordeng.bbs.pojo.entity.ForumEntity;
+
 import java.util.List;
 import java.util.Map;
-
-import vip.doctordeng.bbs.common.page.CommonPage;
-import vip.doctordeng.bbs.pojo.entity.ForumEntity;
 
 public interface ForumService {
 	List<ForumEntity> queryAllForumInfo();

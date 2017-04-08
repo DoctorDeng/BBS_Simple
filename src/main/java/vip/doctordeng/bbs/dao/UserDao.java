@@ -1,9 +1,9 @@
 package vip.doctordeng.bbs.dao;
 
+import vip.doctordeng.bbs.pojo.entity.UserEntity;
+
 import java.util.List;
 import java.util.Map;
-
-import vip.doctordeng.bbs.pojo.entity.UserEntity;
 
 /**
  * 

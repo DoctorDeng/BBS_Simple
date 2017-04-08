@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <base href="<%=basePath%>">
+
+    <title>帖子浏览</title>
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/titlebar.css" rel="stylesheet">
+    <link href="../css/post-detail.css" rel="stylesheet">
+    <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+<div style="height:100%">
+
+    <jsp:include page="/pages/header.jsp"/>
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2 post-head">
+                <!--<img src="img/tm-bg-slide-1.jpg" width="80px" height="80px" class="img-responsive img-circle">-->
+                <img alt="" class="img-responsive img-circle" src="../upload/default/head_icon.jpg"
+                     style="margin:1px 1px;width: 120px;height: 120px;margin: 30px auto;"/>
+                <span class="user-info">
+              <span class="badge" style="background: #f1c40f;margin-top: 5px">发帖者</span>
+              :<span class="badge" style="background: #f1c40f;margin-top: 5px">用户名称</span>
+            </span><br/>
+                <span class="user-info">
+              <span class="badge" style="background: #2ecc71;margin-top: 5px">性别</span>
+              :<span class="badge" style="background: #2ecc71;margin-top: 5px">男</span>
+            </span><br/>
+                <span class="user-info">
+              <span class="badge" style="background: #ff6927;margin-top: 5px">论坛等级</span>:
+              <span class="badge" style="background: #ff6927;margin-top: 5px">LV333</span>
+            </span>
+            </div>
+            <div class="col-md-8 post-content">
+                <div class="post-title">
+                    <h2 style="margin-left:20px;color:black">[板块名称]帖子标题</h2>
+                    <div style="margin-left:20px">
+                        <span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;3333
+                        <!-- 帖子回复数-->&nbsp;|&nbsp;<span>发表于:2017-03-20 20:50:50</span>
+
+                        <!-- 楼主独有编辑 -->
+                        <a style="float:right;margin-right: 20px;"
+                           href="<%=path%>/editpost.action?postId=<%=post.getId()%>">编辑</a>
+
+                    </div>
+                    <strong style=" float:right;margin-right:10px;margin-top: 10px">
+                        <span class="badge" style="background: #ff6927;width: 50px;">楼主</span></strong>
+                </div>
+                <div style="margin: 20px">
+                    内容
+                </div>
+            </div>
+            <!--   <div class="col-md-1 post-border">
+            </div> -->
+        </div>
+    </div>
+
+    <!-- 回复内容 -->
+    <div class="container">
+        <div class="row" style="margin-top: 5px">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2 reply-head">
+                <img alt="" class="img-responsive img-circle" src="../upload/default/head_icon.jpg"
+                     style="margin:1px 1px;width: 120px;height: 120px;margin: 30px auto;"/>
+                <span class="user-info">
+              <span class="badge" style="background: #f1c40f;margin-top: 5px">姓名</span>
+              :<span class="badge" style="background: #f1c40f;margin-top: 5px">用户名称</span>
+            </span><br/>
+                <span class="user-info">
+              <span class="badge" style="background: #2ecc71;margin-top: 5px">性别</span>
+              :<span class="badge" style="background: #2ecc71;margin-top: 5px">男</span>
+            </span><br/>
+                <span class="user-info">
+              <span class="badge" style="background: #ff6927;margin-top: 5px">论坛等级</span>:
+              <span class="badge" style="background: #ff6927;margin-top: 5px">LV33</span>
+            </span>
+                <br>
+            </div>
+            <div class="col-md-8 reply-content">
+                <div class="reply-time">
+                    <span style="color: gray">回复于:2017-25-20 22:20:20</span>
+                    <!-- 1 楼 -->
+                    <span class="badge" style="float:right;margin-right:10px;background: #ff6927;width: 50px;">沙发</span>
+                    <!-- 2 楼 -->
+                    <span class="badge" style="float:right;margin-right:10px;background: #ff5959;width: 50px;">板凳</span>
+                    <!-- 3 楼 -->
+                    <span class="badge" style="float:right;margin-right:10px;background: #4b9ded;width: 50px;">地板</span>
+                    <!-- 4 楼 -->
+                    <span class="badge"
+                          style="float:right;margin-right:10px;background: #4b9ded;width: 50px;">第33楼</span>
+                </div>
+                <div style="margin: 20px;">
+                    这是回复内容
+                </div>
+            </div>
+            <!--  <div class="col-md-1 reply-border">
+            </div> -->
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11">
+                <ul class="pagination page-float" style="float: right;margin-right: 0px;">
+                    <li class=""><a href="">首页</a></li>
+                    <li><a href="">上一页</a></li>
+                    <!-- 其他页-->
+                    <li><a href="">444</a></li>
+                    <li><a href="">444</a></li>
+                    <li><a href="">444</a></li>
+                    <li><a href="">444</a></li>
+                    <!-- 当前页 -->
+                    <li class="active"><a href="">3333</a></li>
+                    <!-- 其他页-->
+                    <li><a href="">22</a></li>
+                    <li><a href="#">下一页</a></li>
+                    <li class="disabled"><a href="#">尾页</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11">
+                <div style="height: 200px;margin: 50px auto;margin-left: 100px; ">
+                    <form action="" method="post">
+                        <input type="hidden" name="postId" value="">
+                        <input type="hidden" name="page" value="">
+                        <div style="margin: 5px auto;height: 100px; ">
+                            <textarea id="TextArea1" cols="20" rows="1" name="content" class="ckeditor"></textarea>
+                        </div>
+                        <s:fielderror fieldName="limit"></s:fielderror>
+                        <div style="float:right;margin: 60px auto">
+                            <input type="submit" class="btn btn-primary" style="width: 60px;" value="回复"></input>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</html>

@@ -1,9 +1,9 @@
 package vip.doctordeng.bbs.dao;
 
+import vip.doctordeng.bbs.pojo.entity.TopicEntity;
+
 import java.util.List;
 import java.util.Map;
-
-import vip.doctordeng.bbs.pojo.entity.TopicEntity;
 
 public interface TopicDao {
 	int insertTopic(TopicEntity topicModule);

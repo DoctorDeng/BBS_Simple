@@ -3,12 +3,9 @@ div.search-list{
     position: relative;
     margin-left: 130px;
     margin-right: 130px;
-
 }
-
 p.post-date{
     float: right;
-
 }
 ul.page-float{
     float: right;

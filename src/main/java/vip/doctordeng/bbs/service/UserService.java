@@ -1,8 +1,8 @@
 package vip.doctordeng.bbs.service;
 
-import java.util.Map;
-
 import vip.doctordeng.bbs.pojo.entity.UserEntity;
+
+import java.util.Map;
 
 public interface UserService {
 	UserEntity getUserById(final Integer userId);
