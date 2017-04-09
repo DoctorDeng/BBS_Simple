@@ -21,7 +21,6 @@
 		prop9,
 		prop10
 	</sql>
-	
 	<sql id="insertReplySql">
 		topic_id, 
 		reply_content, 

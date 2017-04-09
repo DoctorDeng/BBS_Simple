@@ -10,11 +10,11 @@
 <html lang="zh">
 <head>
     <title>校园论坛-登录</title>
-    <jsp:include page="pages/commonHead.jsp"/>
+    <jsp:include page="../pages/commonHead.jsp"/>
     <link href="${path}/css/login.css" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="pages/header.jsp"/>
+<jsp:include page="../pages/header.jsp"/>
 
 <div class="login">
     <form id="form_login" role="form" action="#" method="post">
@@ -46,9 +46,9 @@
     </form>
 </div>
 
-<jsp:include page="pages/bottom.jsp">
+<jsp:include page="../pages/bottom.jsp">
     <jsp:param name="buttom_type" value="bottom_fixed" />
 </jsp:include>
 </body>
-<jsp:include page="pages/commonJs.jsp"/>
+<jsp:include page="../pages/commonJs.jsp"/>
 </html>

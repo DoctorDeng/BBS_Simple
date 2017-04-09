@@ -27,7 +27,7 @@
 		prop10
 	</sql>
 	<sql id="insertTopicSql">
-		topic_intruction,
+		topic_introduction,
 		topic_title,
 		topic_content,
 		user_id,
@@ -46,7 +46,7 @@
 	<insert id="insertTopic" parameterType="Map">
 		INSERT INTO topic (<include refid="insertTopicSql" />)
 		VALUES(
-			#{topic_intruction}, 
+			#{topic_introduction},
 			#{topic_title},
 			#{topic_content},
 			#{user_id},
@@ -71,9 +71,9 @@
 			<if test="topic_id != null">
 				AND topic_id = #{topic_id}
 			</if>
-			<if test="topic_intruction != null and topic_intruction != ''">
-				<bind name="topicIntruction" value="'%' + topic_intruction + '%'"/>
-				AND topic_intruction LIKE #{topicIntruction}
+			<if test="topic_introduction != null and topic_introduction != ''">
+				<bind name="topicIntroduction" value="'%' + topic_introduction + '%'"/>
+				AND topic_introduction LIKE #{topicIntroduction}
 			</if>
 			<if test="topic_title != null and topic_title != ''">
 				<bind name="topicTitle" value="'%' + topic_title + '%'" />
@@ -107,8 +107,8 @@
 	<update id="updateTopicByCondition" parameterType="Map">
 		UPDAT topic
 		<set>
-			<if test="topic_intruction != null and topic_intruction != ''">
-				topic_intruction = #{topic_intruction},
+			<if test="topic_introduction != null and topic_introduction != ''">
+				topic_introduction = #{topic_introduction},
 			</if>
 			<if test="topic_title != null and topic_title != ''">
 				topic_title = #{topic_title},

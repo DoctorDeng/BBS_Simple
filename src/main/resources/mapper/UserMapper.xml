@@ -1,129 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 将Mapper和对应的Dao绑定 -->
 <mapper namespace="vip.doctordeng.bbs.dao.UserDao">
-	<sql id="defaultUserSql">
-	user_id,
-	user_account,
-	user_password,
-	user_name,
-	user_introduction,
-	user_sex,
-	user_ico_url,
-	user_email,
-	user_register_time,
-	user_integal,
-	user_type,
-	user_status,
-	prop1,
-	prop2,
-	prop3,
-	prop4,
-	prop5,
-	prop6,
-	prop7,
-	prop8,
-	prop9,
-	prop10
-	</sql>
-	<sql id="insertUserSql">
-	user_account,
-	user_password,
-	user_name,
-	user_email,
-	prop1,
-	prop2,
-	prop3,
-	prop4,
-	prop5,
-	prop6,
-	prop7,
-	prop8,
-	prop9,
-	prop10
-	</sql>
-	<insert id="insertUser" parameterType="UserEntity">
-		INSERT INTO user
-		(<include refid="insertUserSql" />)
-		VALUES (
-			#{user_account},
-			MD5(#{user_password}),
-			#{user_name},
-			#{user_email},
-			#{prop1},
-			#{prop2},
-			#{prop3},
-			#{prop4},
-			#{prop5},
-			#{prop6},
-			#{prop7},
-			#{prop8},
-			#{prop9},
-			#{prop10}
-		)
-	</insert>
-	<update id="updateUserByCondition" parameterType="Map">
-	UPDATE user
-	<set>
-		<if test="user_password != null and  user_password != '' ">user_password = MD5(#{user_password}),</if>
-		<if test="user_name != null ">user_name = #{user_name},</if>
-		<if test="user_introduction != null">user_introduction = #{user_introduction},</if>
-		<if test="user_sex != null">user_sex = #{user_sex},</if>
-		<if test="user_ico_url != null">user_ico_url = #{user_ico_url},</if>
-		<if test="user_email != null and user_email != '' ">user_email = #{user_email},</if>
-		<if test="user_integal != null ">user_integal = #{user_integal},</if>
-		<if test="user_type != null">user_type = #{user_type},</if>
-		<if test="user_status != null">user_status = #{user_status},</if>
-		<if test="prop1 != null">prop1=#{prop1},</if>
-		<if test="prop2 != null">prop2=#{prop2},</if>
-		<if test="prop3 != null">prop3=#{prop3},</if>
-		<if test="prop4 != null">prop4=#{prop4},</if>
-		<if test="prop5 != null">prop5=#{prop5},</if>
-		<if test="prop6 != null">prop6=#{prop6},</if>
-		<if test="prop7 != null">prop7=#{prop7},</if>
-		<if test="prop8 != null">prop8=#{prop8},</if>
-		<if test="prop9 != null">prop9=#{prop9},</if>
-		<if test="prop10 != null">prop10=#{prop10}</if>
-	</set>
-	</update>
-	<select id="listUserByCondition" resultType="UserEntity">
-		SELECT 
-		<include refid="defaultUserSql" />
-		FROM user
-		<where>
-			<choose>
-				<when test="user_status != null">
-					AND user_status = #{user_status}
-				</when>
-				<when test="user_type != null">0
-					AND user_type = #{user_type}
-				</when>
-				<otherwise>
-					AND user_id = 0;
-				</otherwise>
-			</choose>
-		</where>
-<!-- 						<when test="searchWay = 'listInvalidUser' ">
-				AND user_status
-				</when>
-				<when test="searchWay = 'listUser' ">
-				</when>
-				<when test="searchWay = 'listAllUser' ">
-				</when>
-				<when test="searchWay = 'listNewUser' ">
-				</when>
-				<when test="">
-				</when> -->
-	</select>
-	<select id="getUserByCondition" resultType="UserEntity">
-		SELECT
-		<include refid="defaultUserSql" />
-		FROM user
-		<trim prefix="WHERE" prefixOverrides="AND | OR">
-			<if test="user_id != null"> OR user_id = #{user_id}</if>
-			<if test="user_account != null and user_account != '' "> OR user_account = #{user_account}</if>
-			<if test="user_email != null and user_email != '' ">OR user_email = #{user_email}</if>
-		</trim>
-	</select>
-</mapper>	
+    <sql id="defaultUserSql">
+        user_id,
+        user_account,
+        user_password,
+        user_name,
+        user_introduction,
+        user_sex,
+        user_ico_url,
+        user_email,
+        user_register_time,
+        user_integal,
+        user_type,
+        user_status,
+        prop1,
+        prop2,
+        prop3,
+        prop4,
+        prop5,
+        prop6,
+        prop7,
+        prop8,
+        prop9,
+        prop10
+    </sql>
+    <sql id="insertUserSql">
+        user_account,
+        user_password,
+        user_name,
+        user_email,
+        prop1,
+        prop2,
+        prop3,
+        prop4,
+        prop5,
+        prop6,
+        prop7,
+        prop8,
+        prop9,
+        prop10
+    </sql>
+    <insert id="insertUser" parameterType="UserEntity">
+       INSERT INTO user
+        (<include refid="insertUserSql"/>)
+        VALUES (
+        #{user_account},
+        MD5(#{user_password}),
+        #{user_name},
+        #{user_email},
+        #{prop1},
+        #{prop2},
+        #{prop3},
+        #{prop4},
+        #{prop5},
+        #{prop6},
+        #{prop7},
+        #{prop8},
+        #{prop9},
+        #{prop10}
+        )
+    </insert>
+    <update id="updateUserByCondition" parameterType="Map">
+        UPDATE user
+        <set>
+            <if test="user_password != null and  user_password != '' ">user_password = MD5(#{user_password}),</if>
+            <if test="user_name != null ">user_name = #{user_name},</if>
+            <if test="user_introduction != null">user_introduction = #{user_introduction},</if>
+            <if test="user_sex != null">user_sex = #{user_sex},</if>
+            <if test="user_ico_url != null">user_ico_url = #{user_ico_url},</if>
+            <if test="user_email != null and user_email != '' ">user_email = #{user_email},</if>
+            <if test="user_integal != null ">user_integal = #{user_integal},</if>
+            <if test="user_type != null">user_type = #{user_type},</if>
+            <if test="user_status != null">user_status = #{user_status},</if>
+            <if test="prop1 != null">prop1=#{prop1},</if>
+            <if test="prop2 != null">prop2=#{prop2},</if>
+            <if test="prop3 != null">prop3=#{prop3},</if>
+            <if test="prop4 != null">prop4=#{prop4},</if>
+            <if test="prop5 != null">prop5=#{prop5},</if>
+            <if test="prop6 != null">prop6=#{prop6},</if>
+            <if test="prop7 != null">prop7=#{prop7},</if>
+            <if test="prop8 != null">prop8=#{prop8},</if>
+            <if test="prop9 != null">prop9=#{prop9},</if>
+            <if test="prop10 != null">prop10=#{prop10}</if>
+        </set>
+    </update>
+    <select id="listUserByCondition" resultType="UserEntity">
+        SELECT
+        <include refid="defaultUserSql"/>
+        FROM user
+        <where>
+            <choose>
+                <when test="user_status != null">
+                    AND user_status = #{user_status}
+                </when>
+                <when test="user_type != null">0
+                    AND user_type = #{user_type}
+                </when>
+                <otherwise>
+                    AND user_id = 0;
+                </otherwise>
+            </choose>
+        </where>
+        <!-- 						<when test="searchWay = 'listInvalidUser' ">
+                        AND user_status
+                        </when>
+                        <when test="searchWay = 'listUser' ">
+                        </when>
+                        <when test="searchWay = 'listAllUser' ">
+                        </when>
+                        <when test="searchWay = 'listNewUser' ">
+                        </when>
+                        <when test="">
+                        </when> -->
+    </select>
+    <select id="getUserByCondition" resultType="UserEntity">
+        SELECT
+        <include refid="defaultUserSql"/>
+        FROM user
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="user_id != null">OR user_id = #{user_id}</if>
+            <if test="user_account != null and user_account != '' ">OR user_account = #{user_account}</if>
+            <if test="user_email != null and user_email != '' ">OR user_email = #{user_email}</if>
+        </trim>
+    </select>
+</mapper>

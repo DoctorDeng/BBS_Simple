@@ -10,11 +10,11 @@
 <html lang="zh">
 <head>
     <title>校园论坛-注册</title>
-    <jsp:include page="pages/commonHead.jsp"/>
+    <jsp:include page="../pages/commonHead.jsp"/>
     <link href="${path}/css/regist.css" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="pages/header.jsp"/>
+<jsp:include page="../pages/header.jsp"/>
 
 <div class="regist">
     <div class="container">
@@ -101,11 +101,11 @@
     </div>
 </div>
 
-<jsp:include page="pages/bottom.jsp">
+<jsp:include page="../pages/bottom.jsp">
     <jsp:param name="buttom_type" value="bottom_fixed"/>
 </jsp:include>
 </body>
-<jsp:include page="pages/commonJs.jsp"/>
+<jsp:include page="../pages/commonJs.jsp"/>
 <script type="text/javascript">
     function register() {
         $("#form_register").submit();

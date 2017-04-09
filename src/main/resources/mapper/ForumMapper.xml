@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 将Mapper和对应的Dao绑定 -->
 <mapper namespace="vip.doctordeng.bbs.dao.ForumDao">
-	<sql id="defaultForumSql">
-	forum_id,
-	forum_name,
-	forum_intruction,
-	user_id,
-	forum_parent_id,
-	forum_status,
-	prop1,
-	prop2,
-	prop3,
-	prop4,
-	prop5,
-	prop6,
-	prop7,
-	prop8,
-	prop9,
-	prop10
-	</sql>
-	<sql id="insertForumSql">
-	forum_name,
-	forum_intruction,
-	forum_parent_id,
-	prop1,
-	prop2,
-	prop3,
-	prop4,
-	prop5,
-	prop6,
-	prop7,
-	prop8,
-	prop9,
-	prop10
-	</sql>
-	<sql id="defaultForumStatusSql">
-		forum_status = 0
-	</sql>
+    <sql id="defaultForumSql">
+        forum_id,
+        forum_name,
+        forum_intruction,
+        user_id,
+        forum_parent_id,
+        forum_status,
+        prop1,
+        prop2,
+        prop3,
+        prop4,
+        prop5,
+        prop6,
+        prop7,
+        prop8,
+        prop9,
+        prop10
+    </sql>
+    <sql id="insertForumSql">
+        forum_name,
+        forum_intruction,
+        forum_parent_id,
+        prop1,
+        prop2,
+        prop3,
+        prop4,
+        prop5,
+        prop6,
+        prop7,
+        prop8,
+        prop9,
+        prop10
+    </sql>
+    <sql id="defaultForumStatusSql">
+        forum_status = 0
+    </sql>
 
-	<insert id="insertForum" parameterType="ForumEntity">
-		INSERT INTO forum (<include refid="insertForumSql" />)
-		VALUES(
-			#{forum_name},
-			#{forum_intruction},
-			#{forum_parent_id},
-			#{prop1},
-			#{prop2},
-			#{prop3},
-			#{prop4},
-			#{prop5},
-			#{prop6},
-			#{prop7},
-			#{prop8},
-			#{prop9},
-			#{prop10}
-		)
-	</insert>
-	
-	<update id="updateForumByCondition" parameterType="Map">
-		UPDATE forum 
-		 <set>
-     		 <if test="forum_name != null and forum_name != '' ">forum_name=#{forum_name},</if>
-      		 <if test="forum_intruction != null">forum_intruction=#{forum_intruction},</if>
-      		 <if test="user_id != null and user_id != '' ">user_id=#{user_id},</if>
-      		 <if test="forum_status != null and forum_status != '' ">forum_status=#{forum_status},</if>
-      		 <if test="prop1 != null">prop1=#{prop1},</if>
-      		 <if test="prop2 != null">prop2=#{prop2},</if>
-      		 <if test="prop3 != null">prop3=#{prop3},</if>
-      		 <if test="prop4 != null">prop4=#{prop4},</if>
-      		 <if test="prop5 != null">prop5=#{prop5},</if>
-      		 <if test="prop6 != null">prop6=#{prop6},</if>
-      		 <if test="prop7 != null">prop7=#{prop7},</if>
-      		 <if test="prop8 != null">prop8=#{prop8},</if>
-      		 <if test="prop9 != null">prop9=#{prop9},</if>
-      		 <if test="prop10 != null">prop10=#{prop10}</if>
-   		 </set>
-   		 WHERE forum_id = #{forum_id}
-	</update>
+    <insert id="insertForum" parameterType="ForumEntity">
+        INSERT INTO forum (<include refid="insertForumSql"/>)
+        VALUES(
+        #{forum_name},
+        #{forum_intruction},
+        #{forum_parent_id},
+        #{prop1},
+        #{prop2},
+        #{prop3},
+        #{prop4},
+        #{prop5},
+        #{prop6},
+        #{prop7},
+        #{prop8},
+        #{prop9},
+        #{prop10}
+        )
+    </insert>
 
-	<select id="listForumByCondition" parameterType="Map" resultType="ForumEntity">
-		SELECT
-		<include refid="defaultForumSql" />
-		FROM forum
-		<where>
-			<if test="user_id != null">
-				AND user_id = #{user_id}
-			</if>
-			<if test="forum_parent_id != null">
-				AND forum_parent_id = #{forum_parent_id}
-			</if>
-			<if test="forum_id != null">
-				AND forum_id = #{forum_id}
-			</if>
-			<if test="forum_status != null">
-				AND forum_status = #{forum_status}
-			</if>
-		</where>
-	</select>
+    <update id="updateForumByCondition" parameterType="Map">
+        UPDATE forum
+        <set>
+            <if test="forum_name != null and forum_name != '' ">forum_name=#{forum_name},</if>
+            <if test="forum_intruction != null">forum_intruction=#{forum_intruction},</if>
+            <if test="user_id != null and user_id != '' ">user_id=#{user_id},</if>
+            <if test="forum_status != null and forum_status != '' ">forum_status=#{forum_status},</if>
+            <if test="prop1 != null">prop1=#{prop1},</if>
+            <if test="prop2 != null">prop2=#{prop2},</if>
+            <if test="prop3 != null">prop3=#{prop3},</if>
+            <if test="prop4 != null">prop4=#{prop4},</if>
+            <if test="prop5 != null">prop5=#{prop5},</if>
+            <if test="prop6 != null">prop6=#{prop6},</if>
+            <if test="prop7 != null">prop7=#{prop7},</if>
+            <if test="prop8 != null">prop8=#{prop8},</if>
+            <if test="prop9 != null">prop9=#{prop9},</if>
+            <if test="prop10 != null">prop10=#{prop10}</if>
+        </set>
+        WHERE forum_id = #{forum_id}
+    </update>
+
+    <select id="listForumByCondition" parameterType="Map" resultType="ForumEntity">
+        SELECT
+        <include refid="defaultForumSql"/>
+        FROM forum
+        <where>
+            <if test="user_id != null">
+                AND user_id = #{user_id}
+            </if>
+            <if test="forum_parent_id != null">
+                AND forum_parent_id = #{forum_parent_id}
+            </if>
+            <if test="forum_id != null">
+                AND forum_id = #{forum_id}
+            </if>
+            <if test="forum_status != null">
+                AND forum_status = #{forum_status}
+            </if>
+        </where>
+    </select>
 </mapper>

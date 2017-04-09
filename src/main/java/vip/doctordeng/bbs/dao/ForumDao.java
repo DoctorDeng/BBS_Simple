@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public interface ForumDao {
 	int insertForum(ForumEntity forumModule);
-	int updateForumByCondition(Map condition);
+	int updateForumByCondition(Map  condition);
 	List<ForumEntity> listForumByCondition(Map condition);
 	ForumEntity getForumByCondition(Map condition);
 }
