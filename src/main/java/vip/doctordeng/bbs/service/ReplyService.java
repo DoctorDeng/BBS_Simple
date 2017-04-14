@@ -1,5 +1,6 @@
 package vip.doctordeng.bbs.service;
 
+
 /**
  * Description:
  *
@@ -7,4 +8,6 @@ package vip.doctordeng.bbs.service;
  * @since 2017/4/9 10:40
  */
 public interface ReplyService {
+    boolean addReply(final Integer topic_id, final String reply_content, final Integer user_id);
+   /* List<ReplyEntity> queryReplyByTopicIdAndPage(final Integer topic_id, final int currPage, final int pageSize);*/
 }

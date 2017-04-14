@@ -14,8 +14,9 @@ import java.util.Map;
  *
  */
 public interface UserDao {
-	int insertUser(UserEntity userModule);
+	int insertUser(UserEntity userEntity);
 	int updateUserByCondition(Map condition);
 	List<UserEntity> listUserByCondition(Map condition);
 	UserEntity getUserByCondition(Map condition);
+	int    getUserCountByCondition(Map condition);
 }

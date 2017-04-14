@@ -1,13 +1,12 @@
 package vip.doctordeng.bbs.service;
 
 import vip.doctordeng.bbs.pojo.entity.ForumEntity;
+import vip.doctordeng.bbs.result.Message;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ForumService {
-	List<ForumEntity> queryAllForumInfo();
-	List<ForumEntity> queryUserAllForumInfo(final Integer user_id);
-	List<ForumEntity> queryForumById(final Integer forum_id);
-	int updateForumInfo(final Map dataMap);
+	boolean  addForum(final String forum_name, final String forum_introduction, final Integer forum_parent_id);
+	List<ForumEntity> queryAllForum();
+	Message checkForum(final String forum_name, final String forum_introduction, final Integer forum_parent_id);
 }

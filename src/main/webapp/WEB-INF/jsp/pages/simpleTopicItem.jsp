@@ -14,7 +14,7 @@
         <!-- 所属板块名称 -->
         [${param.forum_name}]
     </h4>
-    ${param.topic_simple_title}
+    ${param.topic_title}
 
     <span class="topic-ico">
         <c:if test="${param.topic_ico == 'new'}">
@@ -25,5 +25,5 @@
         </c:if>
     </span>
 
-    <p class="text-right post-date">浏览量:${param.view_num}&nbsp;评论量:${param.reply_num}&nbsp;发表日期:${param. }</p>
+    <p class="text-right post-date">浏览量:${param.view_num}&nbsp;评论量:${param.reply_num}&nbsp;发表日期:${param.publish_time}</p>
 </a>

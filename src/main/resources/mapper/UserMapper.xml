@@ -44,7 +44,7 @@
         prop10
     </sql>
     <insert id="insertUser" parameterType="UserEntity">
-       INSERT INTO user
+        INSERT INTO user
         (<include refid="insertUserSql"/>)
         VALUES (
         #{user_account},
@@ -86,37 +86,64 @@
             <if test="prop9 != null">prop9=#{prop9},</if>
             <if test="prop10 != null">prop10=#{prop10}</if>
         </set>
+        WHERE user_id = #{user_id}
     </update>
-    <select id="listUserByCondition" resultType="UserEntity">
+
+    <select id="listUserByCondition" parameterType="Map" resultType="UserEntity">
         SELECT
         <include refid="defaultUserSql"/>
         FROM user
-        <where>
-            <choose>
-                <when test="user_status != null">
-                    AND user_status = #{user_status}
-                </when>
-                <when test="user_type != null">0
-                    AND user_type = #{user_type}
-                </when>
-                <otherwise>
-                    AND user_id = 0;
-                </otherwise>
-            </choose>
-        </where>
-        <!-- 						<when test="searchWay = 'listInvalidUser' ">
-                        AND user_status
-                        </when>
-                        <when test="searchWay = 'listUser' ">
-                        </when>
-                        <when test="searchWay = 'listAllUser' ">
-                        </when>
-                        <when test="searchWay = 'listNewUser' ">
-                        </when>
-                        <when test="">
-                        </when> -->
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="user_status != null">
+                AND user_status = #{user_status}
+            </if>
+            <if test="user_type != null">
+                AND user_type = #{user_type}
+            </if>
+            <if test="prop1 != null and prop1 != ''">
+                AND prop1 = #{prop1}
+            </if>
+            <if test="prop2 != null and prop2 != ''">
+                AND prop2 = #{prop2}
+            </if>
+            <if test="prop3 != null and prop3 != ''">
+                AND prop3 = #{prop3}
+            </if>
+            <if test="prop4 != null and prop4 != ''">
+                AND prop4 = #{prop4}
+            </if>
+            <if test="prop5 != null and prop5 != ''">
+                AND prop5 = #{prop5}
+            </if>
+            <if test="prop6 != null and prop6 != ''">
+                AND prop6 = #{prop6}
+            </if>
+            <if test="prop7 != null and prop7 != ''">
+                AND prop7 = #{prop7}
+            </if>
+            <if test="prop8 != null and prop8 != ''">
+                AND prop8 = #{prop8}
+            </if>
+            <if test="prop9 != null and prop9 != ''">
+                AND prop9 = #{prop9}
+            </if>
+            <if test="prop10 != null and prop10 != ''">
+                AND prop10 = #{prop10}
+            </if>
+            <if test="user_name != null">
+                <bind name="userName" value="'%' + user_name + '%'"/>
+                OR user_name LIKE #{userName}
+            </if>
+            <if test="user_email != null">
+                OR user_email = #{user_email}
+            </if>
+        </trim>
+        ORDER BY topic_publish_time DESC
+        <if test="start != null and size != null">
+            LIMIT #{start}, #{size}
+        </if>
     </select>
-    <select id="getUserByCondition" resultType="UserEntity">
+    <select id="getUserByCondition" resultType="UserEntity" parameterType="Map">
         SELECT
         <include refid="defaultUserSql"/>
         FROM user
@@ -124,6 +151,31 @@
             <if test="user_id != null">OR user_id = #{user_id}</if>
             <if test="user_account != null and user_account != '' ">OR user_account = #{user_account}</if>
             <if test="user_email != null and user_email != '' ">OR user_email = #{user_email}</if>
+        </trim>
+    </select>
+
+    <select id="getUserCountByCondition" parameterType="Map">
+        SELECT count(user_id) FROM user
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="user_type != null">
+                AND user_type = #{user_type}
+            </if>
+            <if test="user_status != null">
+                AND user_status = #{user_status}
+            </if>
+            <if test="user_account != null">
+                AND user_account = #{user_account}
+            </if>
+            <if test="user_password != null">
+                AND user_password = MD5(#{user_password})
+            </if>
+            <if test="user_name != null">
+                <bind name="userName" value="'%' + user_name + '%'"/>
+                OR user_name LIKE #{userName}
+            </if>
+            <if test="user_email != null">
+                OR user_email = #{user_email}
+            </if>
         </trim>
     </select>
 </mapper>

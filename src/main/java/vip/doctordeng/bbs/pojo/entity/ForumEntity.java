@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ForumEntity {
-	private Integer fornum_id;
-	private String  fornum_name;
-	private String  forum_intruction;
+	private Integer forum_id;
+	private String  forum_name;
+	private String  forum_introduction;
 	private Integer user_id;
 	private Integer forum_parent_id;
 	/**
@@ -33,4 +33,10 @@ public class ForumEntity {
 	private String  prop8;
 	private String  prop9;
 	private String  prop10;
+
+	public ForumEntity(final Integer forum_parent_id, final String forum_name, final String forum_introduction) {
+		this.forum_name = forum_name;
+		this.forum_parent_id = forum_parent_id;
+		this.forum_introduction = forum_introduction;
+	}
 }

@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserEntity {
 	private Integer user_id;
+	private String  user_account;
 	private String  user_password;
 	private String  user_name;
 	private String  user_introduction;
@@ -31,7 +32,7 @@ public class UserEntity {
 	 */
 	private Integer user_type;
 	/**
-	 * 用户账号状态。0 正常；1 被删除，账号无效；2 用户无法发帖；
+	 * 用户账号状态。0 正常；1 被删除，账号无效；2 用户无法发帖；3 无法回复；4 无法回复和发帖
 	 */
 	private Integer user_status;
 	private java.sql.Timestamp user_register_time;

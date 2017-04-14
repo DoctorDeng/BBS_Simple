@@ -30,7 +30,7 @@
         <jsp:include page="../pages/simpleTopicItem.jsp">
             <jsp:param name="topic_id"           value="${topic_search.topic_id}" />
             <jsp:param name="forum_name"         value="${topic_search.forum_name}" />
-            <jsp:param name="topic_simple_title" value="${topic_search.topic_simple_title}" />
+            <jsp:param name="topic_title"        value="${topic_search.topic_title}" />
             <jsp:param name="topic_ico"          value="none" />
             <jsp:param name="view_num"           value="${topic_search.view_num}" />
             <jsp:param name="reply_num"          value="${topic_search.reply_num}" />

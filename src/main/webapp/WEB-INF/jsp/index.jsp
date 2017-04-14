@@ -37,7 +37,7 @@
                         <jsp:include page="pages/simpleTopicItem.jsp">
                             <jsp:param name="topic_id"           value="${topic_new.topic_id}" />
                             <jsp:param name="forum_name"         value="${topic_new.forum_name}" />
-                            <jsp:param name="topic_simple_title" value="${topic_new.topic_simple_title}" />
+                            <jsp:param name="topic_title"        value="${topic_new.topic_title}" />
                             <jsp:param name="topic_ico"          value="new" />
                             <jsp:param name="view_num"           value="${topic_new.view_num}" />
                             <jsp:param name="reply_num"          value="${topic_new.reply_num}" />
@@ -79,7 +79,7 @@
                             <jsp:include page="pages/simpleTopicItem.jsp">
                                 <jsp:param name="topic_id"           value="${topic_new.topic_id}" />
                                 <jsp:param name="forum_name"         value="${topic_new.forum_name}" />
-                                <jsp:param name="topic_simple_title" value="${topic_new.topic_simple_title}" />
+                                <jsp:param name="topic_title" value="${topic_new.topic_title}" />
                                 <jsp:param name="topic_ico"          value="hot" />
                                 <jsp:param name="view_num"           value="${topic_new.view_num}" />
                                 <jsp:param name="reply_num"          value="${topic_new.reply_num}" />

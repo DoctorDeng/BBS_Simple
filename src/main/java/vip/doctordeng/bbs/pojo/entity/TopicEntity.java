@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TopicEntity {
 	private Integer  topic_id;
-	private String   topic_intruction;
+	private String   topic_introduction;
 	private String   topic_title;
 	private String   topic_content;
 	/**
@@ -35,6 +35,7 @@ public class TopicEntity {
 	// 发表帖子用户 id
 	private Integer  user_id;
 	private java.sql.Timestamp reply_time;
+	// 帖子申精状态, 0 正在申精， 1 申精被拒绝，2 申精通过
 	private String prop1;
 	private String prop2;
 	private String prop3;

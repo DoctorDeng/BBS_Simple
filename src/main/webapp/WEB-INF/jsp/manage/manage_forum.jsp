@@ -56,8 +56,8 @@
                                        placeholder="请输入板块名称">
                             </div>
                             <div class="form-group">
-                                <label for="forum_name">板块简介:</label>
-                                <textarea class="form-control" id="forum_intruction" name="forum_intruction"></textarea>
+                                <label for="forum_introduction">板块简介:</label>
+                                <textarea class="form-control" id="forum_introduction" name="forum_introduction"></textarea>
                             </div>
                             <p>
                                 <button type="submit" class="btn btn-success">创建板块</button>

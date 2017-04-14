@@ -13,8 +13,9 @@ import java.util.Map;
  *
  */
 public interface ForumDao {
-	int insertForum(ForumEntity forumModule);
+	int insertForum(ForumEntity forumEntity);
 	int updateForumByCondition(Map  condition);
 	List<ForumEntity> listForumByCondition(Map condition);
 	ForumEntity getForumByCondition(Map condition);
+	int getForumCountByCondition(Map condition);
 }
