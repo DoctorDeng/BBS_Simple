@@ -30,9 +30,9 @@
 		topic_introduction,
 		topic_title,
 		topic_content,
-		topic_status,
 		user_id,
 		forum_id,
+	    topic_type,
 		prop1,
 		prop2,
 		prop3,
@@ -140,7 +140,7 @@
 	</select>
 	
 	<update id="updateTopicByCondition" parameterType="Map">
-		UPDAT topic
+		UPDATE topic
 		<set>
 			<if test="topic_introduction != null and topic_introduction != ''">
 				topic_introduction = #{topic_introduction},
@@ -205,9 +205,10 @@
 		t.topic_title    AS topic_title,
 		t.topic_view_num AS view_num,
 		(SELECT count(reply_id) FROM reply WHERE reply.topic_id = t.topic_id) AS reply_num,
-		date_format(t.topic_publish_time,'%Y-%m-%d %k:%m:%s') AS publish_time,
+		date_format(t.topic_publish_time,'%Y-%m-%d %H:%i:%s') AS publish_time,
 		f.forum_id   AS forum_id,
-		f.forum_name AS forum_name
+		f.forum_name AS forum_name,
+		t.prop1 AS prop1
 		FROM topic   AS t
 		INNER JOIN forum AS f
 		ON t.forum_id = f.forum_id
@@ -231,6 +232,12 @@
 			<if test="prop1 != null">
 				AND t.prop1 = #{prop1}
 			</if>
+      		<if test="topic_types != null">
+				AND topic_type IN
+				<foreach collection="topic_types" item="topicType" index="index" separator="," open="(" close=")">
+					#{topicType}
+				</foreach>
+			</if>
 		</where>
 		ORDER BY t.topic_publish_time DESC
 		<if test="start != null and size != null">
@@ -238,7 +245,7 @@
 		</if>
 	</select>
 
-	<select id="getTopicCountByCondition">
+	<select id="getTopicCountByCondition" parameterType="Map" resultType="int">
 		SELECT count(topic_id) FROM topic
 		<where>
 			<if test="prop1 != null">
@@ -259,6 +266,12 @@
 			</if>
 			<if test="topic_status != null">
 				AND topic_status = #{topic_status}
+			</if>
+			<if test="topic_types != null">
+				AND topic_type IN
+				<foreach collection="topic_types" item="topicType" index="index" separator="," open="(" close=")">
+					#{topicType}
+				</foreach>
 			</if>
 		</where>
 	</select>
@@ -289,10 +302,13 @@
 			u.user_ico_url AS user_ico_url,
 			t.topic_id     AS topic_id,
 			t.topic_title  AS topic_title,
-			date_format(t.topic_publish_time,'%Y-%m-%d %k:%m:%s') AS publish_time,
+			(SELECT count(reply_id) FROM reply WHERE reply.topic_id = t.topic_id) AS reply_num,
+			date_format(t.topic_publish_time,'%Y-%m-%d %H:%i:%s') AS publish_time,
 			t.topic_content AS publish_content,
 			f.forum_name AS forum_name,
-			0 AS sign
+			0 AS sign,
+			t.prop1 AS prop1,
+			u.user_introduction AS user_introduction
 		FROM topic AS t
 		INNER JOIN forum AS f
 		ON t.forum_id = f.forum_id

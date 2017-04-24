@@ -5,7 +5,7 @@
   Time: 10:56
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="zh">
 <head>
@@ -18,15 +18,15 @@
 <div class="list-group search-list">
     <a href="#" class="list-group-item active">
         <!-- 提示 -->
-        <c:if test="${empty requestScope.topics_search}">
-            抱歉！没有更多的结果
+        <c:if test="${empty requestScope.page.resultList}">
+            抱歉！没有帖子
         </c:if>
-        <c:if test="${!empty requestScope.topics_search}">
-            搜索结果如下:
+        <c:if test="${!empty requestScope.page.resultList}">
+            帖子列表如下:
         </c:if>
     </a>
 
-    <c:forEach items="${requestScope.topics_search}" var="topic_search">
+    <c:forEach items="${requestScope.page.resultList}" var="topic_search">
         <jsp:include page="../pages/simpleTopicItem.jsp">
             <jsp:param name="topic_id"           value="${topic_search.topic_id}" />
             <jsp:param name="forum_name"         value="${topic_search.forum_name}" />
@@ -60,51 +60,61 @@
     <li><a href="">22</a></li>
     <li><a href="">下一页</a></li>
     <li class="disabled"><a href="">尾页</a></li>--%>
-    <c:if test="${!empty requestScope.topics_search}">
-        <c:if test="${requestScope.currPage == requestScope.indexPage}" >
+    <c:if test="${!empty requestScope.page.resultList}">
+        <c:if test="${requestScope.page.currPage == requestScope.page.indexPage}">
             <li class="disabled"><a href="#">首页</a></li>
         </c:if>
-        <c:if test="${requestScope.currPage != requestScope.indexPage}" >
-            <li><a href="${requestScope.indexPage}">首页</a></li>
+        <c:if test="${requestScope.page.currPage != requestScope.page.indexPage}">
+            <li>
+                <a href="${requestScope.path}/topic/topic/search?currPage=${requestScope.page.indexPage}&pageSize=${requestScope.page.pageSize}&keywords=${requestScope.keywords}&forum_id=${requestScope.forum_id}&type=${requestScope.type}">首页</a>
+            </li>
         </c:if>
 
-        <c:if test="${requestScope.previousPage == requestScope.indexPage}" >
+        <c:if test="${requestScope.page.currPage == requestScope.page.indexPage}">
             <li><a class="disabled" href="#">上一页</a></li>
         </c:if>
-        <c:if test="${requestScope.previousPage != requestScope.indexPage}" >
-            <li><a href="${requestScope.previousPage}">上一页</a></li>
+        <c:if test="${requestScope.page.currPage != requestScope.page.indexPage}">
+            <li>
+                <a href="${requestScope.path}/topic/topic/search?currPage=${requestScope.page.previousPage}&pageSize=${requestScope.page.pageSize}&keywords=${requestScope.keywords}&forum_id=${requestScope.forum_id}&type=${requestScope.type}">上一页</a>
+            </li>
         </c:if>
 
-        <c:forEach items="${requestScope.navigates}" var="navigate">
-            <c:if test="${requestScope.currPage == navigate}">
-                <li class="active"><a href="${navigate}">${navigate}</a></li>
+        <c:forEach items="${requestScope.page.navigatePages}" var="navigate">
+            <c:if test="${requestScope.page.currPage == navigate}">
+                <li class="active"><a
+                        href="${requestScope.path}/topic/topic/search?currPage=${navigate}&pageSize=${requestScope.page.pageSize}&keywords=${requestScope.keywords}&forum_id=${requestScope.forum_id}&type=${requestScope.type}">${navigate}</a>
+                </li>
             </c:if>
-            <c:if test="${requestScope.currPage != navigate}">
-                <li><a href="${navigate}">${navigate}</a></li>
+            <c:if test="${requestScope.page.currPage != navigate}">
+                <li>
+                    <a href="${requestScope.path}/topic/topic/search?currPage=${navigate}&pageSize=${requestScope.page.pageSize}&keywords=${requestScope.keywords}&forum_id=${requestScope.forum_id}&type=${requestScope.type}">${navigate}</a>
+                </li>
             </c:if>
         </c:forEach>
 
-        <c:if test="${requestScope.nextPage == requestScope.endPage}" >
+        <c:if test="${requestScope.page.currPage == requestScope.page.endPage}">
             <li><a class="disabled" href="#">下一页</a></li>
         </c:if>
-        <c:if test="${requestScope.nextPage != requestScope.endPage}" >
-            <li><a href="${requestScope.nextPage}">下一页</a></li>
+        <c:if test="${requestScope.page.currPage != requestScope.page.endPage}">
+            <li>
+                <a href="${requestScope.path}/topic/topic/search?currPage=${requestScope.page.nextPage}&pageSize=${requestScope.page.pageSize}&keywords=${requestScope.keywords}&forum_id=${requestScope.forum_id}&type=${requestScope.type}">下一页</a>
+            </li>
         </c:if>
 
-        <c:if test="${requestScope.currPage == requestScope.endPage}" >
+        <c:if test="${requestScope.page.currPage == requestScope.page.endPage}">
             <li class="disabled"><a href="#">尾页</a></li>
         </c:if>
-        <c:if test="${requestScope.currPage != requestScope.endPage}" >
-            <li><a href="${requestScope.endPage}">尾页</a></li>
+        <c:if test="${requestScope.page.currPage != requestScope.page.endPage}">
+            <li>
+                <a href="${requestScope.path}/topic/topic/search?currPage=${requestScope.page.endPage}&pageSize=${requestScope.page.pageSize}&keywords=${requestScope.keywords}&forum_id=${requestScope.forum_id}&type=${requestScope.type}">尾页</a>
+            </li>
         </c:if>
     </c:if>
 </ul>
 
-<c:if test="${empty requestScope.topics_search}">
-    <div style="height: 600px;"></div>
-</c:if>
-
-<jsp:include page="../pages/bottom.jsp"/>
+<jsp:include page="../pages/bottom.jsp">
+    <jsp:param name="buttom_type" value="bottom_fixed" />
+</jsp:include>
 </body>
 <jsp:include page="../pages/commonJs.jsp"/>
 </html>

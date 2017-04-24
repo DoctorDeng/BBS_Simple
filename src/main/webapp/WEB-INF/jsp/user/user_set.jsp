@@ -5,7 +5,7 @@
   Time: 14:03
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="zh">
 <head>
@@ -19,9 +19,9 @@
     <div class="row">
         <div class="col-xs-3">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="active"><a href="#">资料修改</a></li>
-                <li role="presentation"><a href="#">我的帖子</a></li>
-                <li role="presentation"><a href="#">申请记录</a></li>
+                <li role="presentation" class="active"><a href="${requestScope.path}/user/setting">资料修改</a></li>
+                <li role="presentation"><a href="${requestScope.path}/user/topics">我的帖子</a></li>
+                <li role="presentation"><a href="${requestScope.path}/user/records/apply/best">申请记录</a></li>
             </ul>
         </div>
 
@@ -33,17 +33,17 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <form id="form_user_set" action="#" method="post" enctype="multipart/form-data">
+                    <form id="form_user_set" action="${requestScope.path}/user/doSetting" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <c:if test="${empty requestScope.user.user_ico_url}">
+                            <c:if test="${empty sessionScope.user.user_ico_url}">
                                 <img alt="" class="avatar left" height="70" id="user_ico_url_old"
                                      name="user_ico_url_old"
                                      src="${requestScope.path}/img/ico/default_user_ico_1.png" width="70"/>
                             </c:if>
-                            <c:if test="${!empty requestScope.user.user_ico_url}">
+                            <c:if test="${!empty sessionScope.user.user_ico_url}">
                                 <img alt="" class="avatar left" height="70" id="user_ico_url_old"
                                      name="user_ico_url_old"
-                                     src="${requestScope.path}/${requestScope.user.user_ico_url}" width="70"/>
+                                     src="${requestScope.path}/${sessionScope.user.user_ico_url}" width="70"/>
                             </c:if>
                             <span id="user_ico_url_point">请上传你的头像</span><br/>
                         </div>
@@ -52,25 +52,18 @@
                             <label for="user_name">用户名</label>
                             <input type="text" class="form-control" name="user_name" id="user_name"
                                    width="200px" height="80px"
-                                   value="${empty requestScope.user.user_name ? '路人甲' : requestScope.user.user_name}"
+                                   value="${empty sessionScope.user.user_name ? '路人甲' : sessionScope.user.user_name}"
                                    placeholder="请输入名称">
                             <p class="help-block">
 
                             </p>
                         </div>
                         <div class="form-group">
-                            <label for="user_sex">性 别</label><br/>
+                            <label for="user_sex_men">性 别</label><br/>
                             <!-- 男-->
-                            男<input type="radio" id="user_sex_men"  name="user_sex" value="1" >
+                            男<input type="radio" id="user_sex_men"  name="user_sex" value="1">
                             &nbsp;&nbsp;
                             女<input type="radio" id="user_sex_women" name="user_sex" value="2">
-                            <!-- 女-->
-                            <!--  男<input type="radio" name="sex" value="男" >
-                            &nbsp &nbsp女<input type="radio" name="sex" value="女" checked="checked"> -->
-
-                            <!-- 没有性别-->
-                            <!--   男<input type="radio" name="sex" value="男" >
-                            &nbsp &nbsp女<input type="radio" name="sex" value="女"> -->
                         </div>
                         <dl class="form-group">
                             <dt><label for="user_introduction">个人介绍</label></dt>
@@ -78,7 +71,7 @@
                                        size="30" value="${requestScope.user.user_introduction}"/>
                                 <p class="help-block">--%>
                                 <textarea class="form-control" name="user_introduction"
-                                          id="user_introduction">${requestScope.user.user_introduction}</textarea>
+                                          id="user_introduction">${sessionScope.user.user_introduction}</textarea>
                             </dd>
                         </dl>
                         <dl class="form-group">
@@ -109,7 +102,8 @@
         $("#form_user_set").validate({
             rules: {
                 user_name: {
-                    required: true
+                    required: true,
+                    rangelength: [1, 6]
                 },
                 user_password: {
                     rangelength: [6, 20]
@@ -120,7 +114,8 @@
             },
             messages: {
                 user_name: {
-                    required: "必填"
+                    required: "必填",
+                    rangelength: $.validator.format("用户名长度:{0}~{1}")
                 },
                 user_password: {
                     rangelength: $.validator.format("密码长度:{0}~{1}")
@@ -131,12 +126,12 @@
             }
         });
 
-        // 回现用户性别
+        // 回显示用户性别
         <c:choose>
-        <c:when test="${requestScope.user.user_sex == 1}">
+        <c:when test="${sessionScope.user.user_sex == 1}">
             $("#user_sex_men").attr("checked","checked");
         </c:when>
-        <c:when test="${requestScope.user.user_sex == 2}">
+        <c:when test="${sessionScope.user.user_sex == 2}">
             $("#user_sex_women").attr("checked","checked");
         </c:when>
         <c:otherwise>

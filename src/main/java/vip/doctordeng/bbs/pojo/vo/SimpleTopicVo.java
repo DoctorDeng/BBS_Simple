@@ -26,6 +26,8 @@ public class SimpleTopicVo {
     private String publish_time;
     // 帖子类型。0 普通贴。1 精华贴；2 公告贴；
     private Integer topic_type;
+    // 帖子申精状态, 0 正在申精， 1 申精被拒绝，2 申精通过,其他没有申精
+    private String prop1;
 
     public static SimpleTopicVo convert(Map map) {
         SimpleTopicVo simpleTopicVo = new SimpleTopicVo();
@@ -39,6 +41,7 @@ public class SimpleTopicVo {
         if (null != map.get("publish_time")) simpleTopicVo.setPublish_time(map.get("publish_time").toString());
         if (null != map.get("topic_type"))
             simpleTopicVo.setTopic_type(Integer.parseInt(map.get("topic_type").toString()));
+        if (null != map.get("prop1")) simpleTopicVo.setProp1(map.get("prop1").toString());
 
         return simpleTopicVo;
     }

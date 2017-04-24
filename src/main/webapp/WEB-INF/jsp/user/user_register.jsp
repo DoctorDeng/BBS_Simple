@@ -5,7 +5,7 @@
   Time: 13:57
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"  pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="zh">
 <head>
@@ -19,7 +19,7 @@
 <div class="regist">
     <div class="container">
         <div class="form row">
-            <form class="form-horizontal" id="form_register">
+            <form class="form-horizontal" id="form_register" name="form_register" method="post" action="${path}/user/doRegister">
                 <div class="col-md-2"></div>
                 <div class="col-sm-4 col-md-7">
                     <div class="form-group text-center">
@@ -83,14 +83,14 @@
                         </div>
                         <div class="col-md-3"></div>
                     </div>
-                    <br>
+                    <p style="color: red">${requestScope.registerError}</p>
                     <div class="form-group">
                         <div class="col-md-9">
                             <button class="btn btn-success btn-block" onclick="register()">
                                 <i class="fa fa-registered" aria-hidden="true"></i>注&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册
                             </button>
                             <br>
-                            <button class="btn btn-info btn-block">
+                            <button class="btn btn-info btn-block" onclick="toLogin()">
                                 <i class="fa fa-sign-in" aria-hidden="true"></i>返回登录
                             </button>
                         </div>
@@ -111,6 +111,9 @@
         $("#form_register").submit();
     }
 
+    function toLogin() {
+        window.location = "${path}/user/login";
+    }
     $(function () {
         $("#form_register").validate({
             rules: {

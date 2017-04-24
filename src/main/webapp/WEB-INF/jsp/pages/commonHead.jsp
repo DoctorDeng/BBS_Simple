@@ -5,7 +5,7 @@
   Time: 19:57
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="SHORTCUT ICON" href="${path}/img/ico/school.ico">
 <link href="${path}/plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">

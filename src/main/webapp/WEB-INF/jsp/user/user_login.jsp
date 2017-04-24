@@ -5,7 +5,7 @@
   Time: 13:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="zh">
 <head>
@@ -17,7 +17,7 @@
 <jsp:include page="../pages/header.jsp"/>
 
 <div class="login">
-    <form id="form_login" role="form" action="#" method="post">
+    <form id="form_login" role="form" action="${requestScope.path}/user/doLogin" method="post">
         <div class="form-group text-center">
             <h3>校园论坛-登录</h3>
         </div>
@@ -34,13 +34,13 @@
                 <input type="password" class="form-control  input-lg" id="user_password" name="user_password" placeholder="密码">
             </div>
         </div>
-        <p>&nbsp;${requestScope.result_message}</p>
+        <p style="color: red;">&nbsp;${requestScope.message_login}</p>
         <button type="submit" class="btn btn btn-success btn-lg btn-block">
             <i class="fa fa-sign-in" aria-hidden="true"></i>登录
         </button>
         <br>
         <div class="form-group text-center">
-            <a href="#">注册论坛账号</a> |
+            <a href="${requestScope.path}/user/register">注册论坛账号</a> |
             <a href="#">忘记密码?</a>
         </div>
     </form>

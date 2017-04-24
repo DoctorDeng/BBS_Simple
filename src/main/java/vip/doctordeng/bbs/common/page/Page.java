@@ -58,7 +58,7 @@ public class Page<T> {
 	 * @return: void      
 	 * @throws
 	 */
-	private void init(int totalData, int pageSize, int currPage) {
+	private void init(int totalData, int currPage, int pageSize) {
 		if (pageSize > 1) {
 			this.pageSize  = pageSize;
 		}

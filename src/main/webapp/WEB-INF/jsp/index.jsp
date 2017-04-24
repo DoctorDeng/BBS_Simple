@@ -5,7 +5,7 @@
   Time: 20:11
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="zh">
 <head>
@@ -27,11 +27,10 @@
                 <ul class="list-group">
                     <div class="list-group-item active">
                         论坛新帖
-                        <a href="#"
+                        <a href="${requestScope.path}/topic/topic/search?type=all"
                            style="float: right;color: white">更多>></a>
                         <!--<p style="float: right"></p>-->
                     </div>
-
 
                     <c:forEach items="${requestScope.topics_new}" var="topic_new">
                         <jsp:include page="pages/simpleTopicItem.jsp">
@@ -57,25 +56,15 @@
             <!-- 论坛公告 -->
             <jsp:include page="pages/notice.jsp" />
 
-
             <div class="row">
-                <div class="col-md-9" style="margin-left: 15px">
-                    <ul class="list-group">
+                <div class="col-md-9" style="margin-left: 15px;">
+                    <ul class="list-group" style="margin-right: 20px;">
                         <div class="list-group-item active">
                             精华帖
-                            <a href="#"
+                            <a href="${requestScope.path}/topic/topic/search?type=best"
                                style="float: right;color: white">更多>></a>
                         </div>
-
-                        <!-- 帖子 -->
-      <%--                  <a href="<%=request.getContextPath()%>/pages/post.jsp?postId=&&page=1"
-                           class="list-group-item">
-                            <h4 class="list-group-item-heading">[板块标题]</h4>
-                            帖子标题<span class="label label-warning badge">热</span>
-                            <p class="text-right" style="float: right;margin-right: 20px">浏览量:234&nbsp;评论量:32&nbsp;发表日期:2017-20-20
-                                20:20:20</p>
-                        </a>--%>
-                        <c:forEach items="${requestScope.topics_hot}" var="topic_new">
+                        <c:forEach items="${requestScope.topics_best}" var="topic_new">
                             <jsp:include page="pages/simpleTopicItem.jsp">
                                 <jsp:param name="topic_id"           value="${topic_new.topic_id}" />
                                 <jsp:param name="forum_name"         value="${topic_new.forum_name}" />
@@ -89,7 +78,6 @@
                     </ul>
                 </div>
             </div>
-
             <!-- 板块信息 -->
            <%-- <h3 style="margin-top: 20px;margin-left: 15px">板块分类</h3>
             <hr/>

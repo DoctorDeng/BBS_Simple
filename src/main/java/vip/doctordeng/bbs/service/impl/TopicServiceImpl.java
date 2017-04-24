@@ -65,10 +65,30 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
+    public Page<SimpleTopicVo> querySimpleTopicAll(int currPage, int pageSize) {
+        Map queryCountMap = new HashMap(){{
+            put("topic_status",TopicConstant.TOPIC_STATUS_NORMAL);
+            put("topic_types", getCommonTopicTypes());
+        }};
+
+        int count = topicDao.getTopicCountByCondition(queryCountMap);
+        Page<SimpleTopicVo> page = new Page<>(count, currPage, pageSize);
+
+        queryCountMap.put("start", page.getSqlStart());
+        queryCountMap.put("size", page.getPageSize());
+        List<Map> simpleTopicMaps = topicDao.listSimpleTopicByCondition(queryCountMap);
+        List<SimpleTopicVo> simpleTopicVos = SimpleTopicVo.covertList(simpleTopicMaps);
+        page.setResultList(simpleTopicVos);
+
+        return page;
+    }
+
+    @Override
     public Page<SimpleTopicVo> querySimpleTopicByForum(Integer forum_id, int currPage, int pageSize) {
         Map queryCountMap = new HashMap(){{
            put("forum_id",forum_id);
            put("topic_status",TopicConstant.TOPIC_STATUS_NORMAL);
+            put("topic_types", getCommonTopicTypes());
         }};
 
         int count = topicDao.getTopicCountByCondition(queryCountMap);
@@ -88,6 +108,7 @@ public class TopicServiceImpl implements TopicService {
         Map queryCountMap = new HashMap(){{
             put("topic_title", topic_title);
             put("topic_status",TopicConstant.TOPIC_STATUS_NORMAL);
+            put("topic_types", getCommonTopicTypes());
         }};
 
         int count = topicDao.getTopicCountByCondition(queryCountMap);
@@ -107,6 +128,7 @@ public class TopicServiceImpl implements TopicService {
         Map queryCountMap = new HashMap(){{
             put("user_id", user_id);
             put("topic_status",TopicConstant.TOPIC_STATUS_NORMAL);
+            put("topic_type", TopicConstant.TOPIC_TYPE_COMMON);
         }};
 
         int count = topicDao.getTopicCountByCondition(queryCountMap);
@@ -146,6 +168,25 @@ public class TopicServiceImpl implements TopicService {
         Map queryCountMap = new HashMap(){{
             put("topic_status",TopicConstant.TOPIC_STATUS_NORMAL);
             put("topic_type",TopicConstant.TOPIC_TYPE_BEST);
+        }};
+
+        int count = topicDao.getTopicCountByCondition(queryCountMap);
+        Page<SimpleTopicVo> page = new Page<>(count, currPage, pageSize);
+
+        queryCountMap.put("start", page.getSqlStart());
+        queryCountMap.put("size", page.getPageSize());
+        List<Map> simpleTopicMaps = topicDao.listSimpleTopicByCondition(queryCountMap);
+        List<SimpleTopicVo> simpleTopicVos = SimpleTopicVo.covertList(simpleTopicMaps);
+        page.setResultList(simpleTopicVos);
+
+        return page;
+    }
+
+    @Override
+    public Page<SimpleTopicVo> queryApplyBestTopic(int currPage, int pageSize) {
+        Map queryCountMap = new HashMap(){{
+            put("prop1", TopicConstant.TOPIC_APPLY_APPLYING);
+            put("topic_status",TopicConstant.TOPIC_STATUS_NORMAL);
         }};
 
         int count = topicDao.getTopicCountByCondition(queryCountMap);
@@ -218,10 +259,10 @@ public class TopicServiceImpl implements TopicService {
             List<Map> replys = replyDao.listReplyInfoByCondition(queryMap);
             results.addAll(replys);
         } else {
-            queryMap.put("start", page.getSqlStart());
+            queryMap.put("start", page.getSqlStart() - 1);
             queryMap.put("size", page.getPageSize());
             List<Map> replys = replyDao.listReplyInfoByCondition(queryMap);
-            results.addAll(replys);
+             results.addAll(replys);
         }
 
         List<TopicVo> topicVos = TopicVo.coverList(results);
@@ -269,5 +310,14 @@ public class TopicServiceImpl implements TopicService {
 
         int result = forumDao.getForumCountByCondition(queryMap);
         return result > 0;
+    }
+
+    private ArrayList<Integer> getCommonTopicTypes() {
+        return new ArrayList<Integer>() {
+            {
+                add(TopicConstant.TOPIC_TYPE_COMMON);
+                add(TopicConstant.TOPIC_TYPE_BEST);
+            }
+        };
     }
 }

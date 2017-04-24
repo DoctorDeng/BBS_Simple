@@ -6,10 +6,10 @@
   TODO: 帖子简略信息模板
   rely on: 依赖 search-result.css，必须放在 <div class="list-group"> 或 <ul class="list-group"> 中
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"   pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- 搜索到的帖子列表-->
-<a href="${param.topic_id}" class="list-group-item">
+<a href="${requestScope.path}/topic/${param.topic_id}" class="list-group-item">
     <h4 class="list-group-item-heading" style="color: rgb(56,147,235);">
         <!-- 所属板块名称 -->
         [${param.forum_name}]
@@ -21,7 +21,7 @@
             <img src="${path}/img/topic_new.png">
         </c:if>
         <c:if test="${param.topic_ico == 'hot'}">
-            <img src="${path}/img/topic_hot.png">
+            <img src="${path}/img/topic_hot.gif">
         </c:if>
     </span>
 

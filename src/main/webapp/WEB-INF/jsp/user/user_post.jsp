@@ -5,7 +5,7 @@
   Time: 18:16
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="zh">
 <head>
@@ -55,9 +55,10 @@
         <div class="form-group">
             <label for="forum_id" class="col-sm-1 control-label" style="font-size: 20px;">板块:</label>
             &nbsp;&nbsp;&nbsp;
-            <select class="selectpicker" id="forum_id">
-                <option value="1">踢足球</option>
-                <option value="2">游泳</option>
+            <select class="selectpicker" id="forum_id" name="forum_id">
+                <c:forEach var="forum" items="${requestScope.forums}">
+                    <option value="${forum.forum_id}">${forum.forum_name}</option>
+                </c:forEach>
             </select>
         </div>
 
@@ -79,8 +80,6 @@
         </div>
     </div>
 </div>
-
-
 <jsp:include page="../pages/bottom.jsp"/>
 </body>
 <jsp:include page="../pages/commonJs.jsp"/>
@@ -94,7 +93,6 @@
      });*/
     $(function () {
         /* $("#signupForm").validate();*/
-
         var editor = new wangEditor('topic_content');
         editor.create();
 
@@ -106,7 +104,6 @@
             // 获取格式化后的纯文本
             var formatText = editor.$txt.formatText();
 
-//
             var topic_title = $("#topic_title").val();
             var forum_id = $("#forum_id").find("option:selected").val();
             if (topic_title.length < 5) {
@@ -120,16 +117,26 @@
                 $("#modal_point").modal('show');
             } else {
                 $.ajax({
-                    url: "",
-                    type: "post",
+                    url: "${requestScope.path}/topic/addTopic",
+                    type: "POST",
                     data: {
                         "topic_content": html,
                         "topic_title": $("#topic_title").val(),
                         "forum_id": $("#forum_id").find("option:selected").val()
                     },
                     dataType: "json",
-                    success: function () {
-
+                    success: function (data) {
+                       if(data.resultCode == '1') {
+                           $("#message_error").text(data.resultMessage);
+                           $("#modal_point").modal('show');
+                       }
+                       else {
+                          window.location = "${requestScope.path}/index";
+                       }
+                    },
+                    error:function (data) {
+                        $("#message_error").text("抱歉！服务器出错了");
+                        $("#modal_point").modal('show');
                     }
                 });
             }

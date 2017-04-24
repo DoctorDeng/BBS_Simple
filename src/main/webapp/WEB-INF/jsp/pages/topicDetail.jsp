@@ -5,7 +5,7 @@
   Time: 9:11
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"  pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container" style="margin-top: 50px">
     <div class="row">
@@ -14,18 +14,21 @@
         <div class="col-md-2 post-head">
             <img alt="" class="img-responsive img-circle" src="${requestScope.path}/${param.user_ico_url}"
                  style="margin:1px 1px;width: 120px;height: 120px;margin: 30px auto;"/>
-            <span class="user-info">
-              <span class="badge" style="background: #f1c40f;margin-top: 5px">发帖者:</span>
-              <span class="badge" style="background: #f1c40f;margin-top: 5px">${param.user_name}</span>
-            </span><br/>
-            <span class="user-info">
+            <span class="">
+              <span class="" style="margin-top: 5px;font-size: 18px;color: rgb(201,105,30);">${param.user_name}</span>
+            </span><br/><br/>
+            <%--<span class="user-info">
               <span class="badge" style="background: #2ecc71;margin-top: 5px">性别:</span>
               :<span class="badge" style="background: #2ecc71;margin-top: 5px">${param.user_sex}</span>
-            </span><br/>
+            </span><br/>--%>
             <%--<span class="user-info">
               <span class="badge" style="background: #ff6927;margin-top: 5px">论坛等级</span>:
               <span class="badge" style="background: #ff6927;margin-top: 5px">LV333</span>
             </span>--%>
+            <span class="" style="font-size: 1px;color: rgb(153,153,156);">
+                <span class="" style="margin-top: 5px;font-size: 10px;color: red;">个性签名:</span>
+                ${param.user_introduction}
+            </span>
         </div>
         <div class="col-md-8 post-content">
             <div class="post-title">

@@ -131,11 +131,11 @@
             <if test="prop10 != null and prop10 != ''">
                 AND prop10 = #{prop10}
             </if>
-            AND forum_id != 1
+            AND prop1 != '0'
         </where>
     </select>
 
-    <select id="getForumCountByCondition" parameterType="Map">
+    <select id="getForumCountByCondition" parameterType="Map" resultType="int">
         SELECT count(forum_id) FROM forum
         <where>
             <if test="forum_parent_id != null">
@@ -153,7 +153,7 @@
             <if test="forum_name != null">
                 AND forum_name = #{forum_name}
             </if>
-            AND forum_id != 1
+            AND prop1 != '0'
         </where>
     </select>
 

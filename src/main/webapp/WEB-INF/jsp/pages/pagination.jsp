@@ -6,7 +6,7 @@
   TODO: 分页类模板
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"  pageEncoding="utf-8" %>
 <ul class="pagination pagination-lg page-float ${param.custom_class}" style="${param.custom_style}">
 
 

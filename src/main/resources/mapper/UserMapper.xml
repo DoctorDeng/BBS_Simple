@@ -32,6 +32,7 @@
         user_password,
         user_name,
         user_email,
+        user_ico_url,
         prop1,
         prop2,
         prop3,
@@ -51,6 +52,7 @@
         MD5(#{user_password}),
         #{user_name},
         #{user_email},
+        #{user_ico_url},
         #{prop1},
         #{prop2},
         #{prop3},
@@ -137,11 +139,21 @@
             <if test="user_email != null">
                 OR user_email = #{user_email}
             </if>
+            <if test="keywords != null">
+                <bind name="userName" value="'%' + keywords + '%'"/>
+                AND (user_name LIKE #{userName} OR user_email = #{keywords})
+            </if>
         </trim>
-        ORDER BY topic_publish_time DESC
+        ORDER BY user_id DESC
         <if test="start != null and size != null">
             LIMIT #{start}, #{size}
         </if>
+    </select>
+
+    <select id="searchUserByKeywords" parameterType="Map" resultType="UserEntity">
+        SELECT <include refid="defaultUserSql"/>
+        FROM user
+        WHERE (user_name LIKE '' OR ) AND user_type
     </select>
     <select id="getUserByCondition" resultType="UserEntity" parameterType="Map">
         SELECT
@@ -149,12 +161,16 @@
         FROM user
         <trim prefix="WHERE" prefixOverrides="AND | OR">
             <if test="user_id != null">OR user_id = #{user_id}</if>
-            <if test="user_account != null and user_account != '' ">OR user_account = #{user_account}</if>
+            <if test="user_account != null and user_account != '' and user_password == null">OR user_account = #{user_account}</if>
             <if test="user_email != null and user_email != '' ">OR user_email = #{user_email}</if>
+            <if test="user_password != null and user_account != null">
+                AND user_password = MD5(#{user_password})
+                AND user_account  = #{user_account}
+            </if>
         </trim>
     </select>
 
-    <select id="getUserCountByCondition" parameterType="Map">
+    <select id="getUserCountByCondition" parameterType="Map" resultType="int">
         SELECT count(user_id) FROM user
         <trim prefix="WHERE" prefixOverrides="AND | OR">
             <if test="user_type != null">
@@ -175,6 +191,10 @@
             </if>
             <if test="user_email != null">
                 OR user_email = #{user_email}
+            </if>
+            <if test="keywords != null">
+                <bind name="userName" value="'%' + keywords + '%'"/>
+                AND (user_name LIKE #{userName} OR user_email = #{keywords})
             </if>
         </trim>
     </select>

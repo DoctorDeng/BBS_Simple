@@ -168,10 +168,12 @@
             u.user_ico_url AS user_ico_url,
             date_format(r.reply_time,'%Y-%m-%d %k:%m:%s') AS publish_time,
             <![CDATA[
-                (SELECT count(reply_id) FROM reply
+                (SELECT count(reply_id) + 1 FROM reply
                 WHERE reply.topic_id = reply.topic_id AND reply.reply_time < r.reply_time) AS reply_floor
             ]]>,
-            r.reply_content AS publish_content
+            r.reply_content AS publish_content,
+			1 AS sign,
+			u.user_introduction AS user_introduction
         FROM reply AS r
             INNER JOIN user AS u
                 ON r.user_id = u.user_id

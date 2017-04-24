@@ -9,7 +9,7 @@ import vip.doctordeng.bbs.result.constant.ResultCodeConstant;
  * @since 2017/4/13 11:16
  */
 public class ResultUtil {
-    public static Message getOnErrorFailMessage(final String errorProperty, final String errorMessage) {
+    public static Message getOneErrorFailMessage(final String errorProperty, final String errorMessage) {
         Message message = getMessage(ResultCodeConstant.RESULT_CODE_FAIL, ResultStatus.FAIL);
         message.addError(errorProperty, errorMessage);
         return message;

@@ -35,16 +35,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkUserByAccountAndPassword(String user_account, String user_password) {
+    public UserEntity getUserByAccountAndPassword(String user_account, String user_password) {
         if (StringUtils.isEmpty(user_account)
-                || StringUtils.isEmpty(user_password)) return false;
+                || StringUtils.isEmpty(user_password)) return null;
 
-        int result = userDao.getUserCountByCondition(new HashMap(){{
+        UserEntity userEntity = userDao.getUserByCondition(new HashMap() {{
             put("user_account", user_account);
             put("user_password", user_password);
         }});
 
-        return result > 0;
+        return userEntity;
     }
 
     @Override
@@ -52,11 +52,20 @@ public class UserServiceImpl implements UserService {
         if (StringUtils.isEmpty(user_account)
                 || StringUtils.isEmpty(user_password)
                 || StringUtils.isEmpty(user_email)) return false;
+
+        int checkResult = userDao.getUserCountByCondition(new HashMap(){{
+            put("user_account", user_account);
+            put("user_email", user_email);
+        }});
+
+        if (checkResult > 0) return false;
+
         UserEntity userEntity = new UserEntity();
         userEntity.setUser_account(user_account);
         userEntity.setUser_password(user_password);
         userEntity.setUser_email(user_email);
         userEntity.setUser_name("路人甲");
+        userEntity.setUser_ico_url("img/ico/default_user_ico_1.png");
         int result = userDao.insertUser(userEntity);
 
         return result > 0;
@@ -65,8 +74,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<UserEntity> queryUserByKeywords(final String keywords,int current_page, int page_size) {
         Map condition = new HashMap();
-        condition.put("user_name", keywords);
-        condition.put("user_email",keywords);
+        condition.put("keywords", keywords);
+        condition.put("user_type", UserConstant.USER_TYPE_COMMON);
         int userCount = userDao.getUserCountByCondition(condition);
 
         Page<UserEntity> page = new Page<>(userCount, current_page, page_size);
@@ -119,7 +128,10 @@ public class UserServiceImpl implements UserService {
     public boolean limitedUserReplyAndPost(Integer user_id) {
         return updateUserStatus(user_id, UserConstant.USER_STATUS_LIMIT_REPLY_POST);
     }
-
+    @Override
+    public boolean recoveryUser(Integer user_id) {
+        return  updateUserStatus(user_id, UserConstant.USER_STATUS_NORMAL);
+    }
     public static void main(String[] args) {
         Map map = new HashMap() {{
             put("sss", "ssss");
