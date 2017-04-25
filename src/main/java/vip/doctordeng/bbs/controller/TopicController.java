@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import vip.doctordeng.bbs.common.PointUtil;
 import vip.doctordeng.bbs.common.constant.PointConstant;
 import vip.doctordeng.bbs.common.constant.TopicConstant;
+import vip.doctordeng.bbs.common.constant.UserConstant;
 import vip.doctordeng.bbs.common.page.Page;
 import vip.doctordeng.bbs.pojo.entity.UserEntity;
 import vip.doctordeng.bbs.pojo.vo.SimpleTopicVo;
@@ -65,7 +66,14 @@ public class TopicController {
 
         if (null == userEntity) {
             resultMap.put("resultCode", 1);
-            resultMap.put("resultMessage", "登录超时！");
+            resultMap.put("resultMessage", "登录超时, 请重新登录！");
+            return resultMap;
+        }
+
+        if (UserConstant.USER_STATUS_LIMIT_REPLY_POST == userEntity.getUser_status() ||
+                UserConstant.USER_STATUS_LIMIT_POST == userEntity.getUser_status()) {
+            resultMap.put("resultCode", 1);
+            resultMap.put("resultMessage", "无此权限！");
             return resultMap;
         }
 
@@ -232,6 +240,13 @@ public class TopicController {
         if (null == userEntity) {
             resultMap.put("resultCode", "1");
             resultMap.put("resultMessage", "登录超时, 请重新登录！");
+            return resultMap;
+        }
+
+        if (UserConstant.USER_STATUS_LIMIT_REPLY_POST == userEntity.getUser_status() ||
+                UserConstant.USER_STATUS_LIMIT_REPLY == userEntity.getUser_status()) {
+            resultMap.put("resultCode", "1");
+            resultMap.put("resultMessage", "无此权限！");
             return resultMap;
         }
 

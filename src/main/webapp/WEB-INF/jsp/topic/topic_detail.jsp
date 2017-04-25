@@ -145,6 +145,7 @@
     </div><!-- /.modal-dialog -->
     <input id="signIsRefresh" type="hidden" value="0">
 </div>
+<div style="height: 250px;"></div>
 <jsp:include page="../pages/bottom.jsp" />
 </body>
 <jsp:include page="../pages/commonJs.jsp"/>

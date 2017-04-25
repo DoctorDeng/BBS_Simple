@@ -30,7 +30,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-    private Logger logger = Logger.getLogger(AdminController.class);
+    private static final Logger logger = Logger.getLogger(AdminController.class);
     @Resource
     private UserService userService;
 

@@ -10,7 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import vip.doctordeng.bbs.common.FileUtil;
 import vip.doctordeng.bbs.common.PointUtil;
+import vip.doctordeng.bbs.common.RequestUtil;
 import vip.doctordeng.bbs.common.constant.PointConstant;
+import vip.doctordeng.bbs.common.constant.UserConstant;
 import vip.doctordeng.bbs.common.enums.FileTypeEnum;
 import vip.doctordeng.bbs.common.page.Page;
 import vip.doctordeng.bbs.pojo.entity.ForumEntity;
@@ -53,8 +55,8 @@ public class UserController {
     @RequestMapping("/doLogin")
     public String doLogin(String user_account, String user_password, HttpServletRequest request) {
         // 仅仅做开发测试用
-        user_account = "123456789";
-        user_password = "123456";
+      /*  user_account = "123456789";
+        user_password = "123456";*/
 
         if (StringUtils.isEmpty(user_account)
                 || StringUtils.isEmpty(user_password)) {
@@ -67,6 +69,12 @@ public class UserController {
         if (user == null) {
             request.setAttribute("message_login", "用户名或密码错误!");
             return "user/user_login";
+        }
+
+        if (UserConstant.USER_STATUS_INVALID == user.getUser_status()) {
+            PointUtil.initToPoint(request,
+                    "账号已被管理员注销!", PointConstant.POINT_ICO_ERROR, "返回主页", "index");
+            return "point/point";
         }
 
         request.getSession().setAttribute("user", user);
@@ -193,7 +201,19 @@ public class UserController {
 
     @RequestMapping("/post")
     public String addTopic(HttpServletRequest request) {
-        if (request.getSession().getAttribute("user") == null) return "redirect:/user/login";
+        if (RequestUtil.getUser(request) == null) {
+            PointUtil.initToPoint(request,
+                    "未登录, 请登录!", PointConstant.POINT_ICO_ERROR, "登录", "user/login");
+            return "point/point";
+        }
+
+        UserEntity userEntity = RequestUtil.getUser(request);
+        if (UserConstant.USER_STATUS_LIMIT_REPLY_POST == userEntity.getUser_status() ||
+                UserConstant.USER_STATUS_LIMIT_POST == userEntity.getUser_status()) {
+            PointUtil.initToPoint(request,
+                    "无此权限!", PointConstant.POINT_ICO_ERROR, "返回主页", "index");
+            return "point/point";
+        }
 
         List<ForumEntity> forums = forumService.queryAllForum();
         request.setAttribute("forums", forums);
@@ -221,7 +241,7 @@ public class UserController {
     @RequestMapping("/records/apply/best")
     public String userApplyBestRecords(HttpServletRequest request,
                                        String currPage,
-                                       String pageSize){
+                                       String pageSize) {
         if (request.getSession().getAttribute("user") == null) return "redirect:/user/login";
 
         if (StringUtils.isEmpty(currPage)) currPage = "1";

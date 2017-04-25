@@ -12,7 +12,7 @@
     <ul class="list-group">
         <div class="list-group-item active">论坛公告</div>
         <c:forEach items="${requestScope.notices}" var="notice">
-            <a href="${notice.topic_id}" class="list-group-item">${notice.topic_title}</a>
+            <a href="${requestScope.path}/topic/${notice.topic_id}" class="list-group-item">${notice.topic_title}</a>
         </c:forEach>
     </ul>
     <c:if test="${!empty sessionScope.user}">

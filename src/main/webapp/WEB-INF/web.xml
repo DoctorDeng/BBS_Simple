@@ -82,4 +82,16 @@
 		<!-- 注意这里不能加上/ 例如：/*.do -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500/500.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/error/500/500.jsp</location>
+	</error-page>
 </web-app>

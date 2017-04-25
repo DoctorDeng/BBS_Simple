@@ -66,7 +66,7 @@
                             女<input type="radio" id="user_sex_women" name="user_sex" value="2">
                         </div>
                         <dl class="form-group">
-                            <dt><label for="user_introduction">个人介绍</label></dt>
+                            <dt><label for="user_introduction">个性签名</label></dt>
                             <dd><%--<input id="user_introduction" type="tex" class="form-control" name="user_introduction"
                                        size="30" value="${requestScope.user.user_introduction}"/>
                                 <p class="help-block">--%>
@@ -108,6 +108,10 @@
                 user_password: {
                     rangelength: [6, 20]
                 },
+                user_introduction:{
+                    required: false,
+                    rangelength: [0, 15]
+                },
                 user_confirm_password: {
                     equalTo: "#user_password"
                 }
@@ -118,6 +122,9 @@
                     rangelength: $.validator.format("用户名长度:{0}~{1}")
                 },
                 user_password: {
+                    rangelength: $.validator.format("密码长度:{0}~{1}")
+                },
+                user_introduction:{
                     rangelength: $.validator.format("密码长度:{0}~{1}")
                 },
                 user_confirm_password: {
