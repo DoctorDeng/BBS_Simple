@@ -129,7 +129,6 @@ public class TopicServiceImpl implements TopicService {
             put("user_id", user_id);
             put("topic_status",TopicConstant.TOPIC_STATUS_NORMAL);
         }};
-
         int count = topicDao.getTopicCountByCondition(queryCountMap);
         Page<SimpleTopicVo> page = new Page<>(count, currPage, pageSize);
 
