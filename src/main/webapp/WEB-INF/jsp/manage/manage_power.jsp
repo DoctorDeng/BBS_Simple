@@ -66,7 +66,7 @@
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="#"><span onclick="updateUserPower('0', '${user_power.user_status}','${user_power.user_id}')">回复正常</span></a>
+                                        <a href="#"><span onclick="updateUserPower('0', '${user_power.user_status}','${user_power.user_id}')">恢复正常</span></a>
                                     </li>
                                     <li>
                                         <a href="#"><span onclick="updateUserPower('1', '${user_power.user_status}','${user_power.user_id}')">删除账号</span></a>

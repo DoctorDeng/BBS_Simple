@@ -232,8 +232,14 @@
 			<if test="prop1 != null">
 				AND t.prop1 = #{prop1}
 			</if>
+			<if test="prop1s != null">
+				AND t.prop1 IN
+				<foreach collection="prop1s" item="prop1" index="index" separator="," open="(" close=")">
+					#{prop1}
+				</foreach>
+			</if>
       		<if test="topic_types != null">
-				AND topic_type IN
+				AND t.topic_type IN
 				<foreach collection="topic_types" item="topicType" index="index" separator="," open="(" close=")">
 					#{topicType}
 				</foreach>
@@ -266,6 +272,12 @@
 			</if>
 			<if test="topic_status != null">
 				AND topic_status = #{topic_status}
+			</if>
+			<if test="prop1s != null">
+				AND prop1 IN
+				<foreach collection="prop1s" item="prop1" index="index" separator="," open="(" close=")">
+					#{prop1}
+				</foreach>
 			</if>
 			<if test="topic_types != null">
 				AND topic_type IN

@@ -144,7 +144,7 @@ public class TopicController {
 
     @RequestMapping(value = "/apply/best/update", method = RequestMethod.POST)
     @ResponseBody
-    public Map aggreeApplyBest(String topic_id, HttpServletRequest request, String type) {
+    public Map updateApplyBest(String topic_id, HttpServletRequest request, String type) {
         request.getSession(false);
         UserEntity userEntity = (UserEntity) request.getSession().getAttribute("user");
 

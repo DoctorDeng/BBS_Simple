@@ -128,7 +128,6 @@ public class TopicServiceImpl implements TopicService {
         Map queryCountMap = new HashMap(){{
             put("user_id", user_id);
             put("topic_status",TopicConstant.TOPIC_STATUS_NORMAL);
-            put("topic_type", TopicConstant.TOPIC_TYPE_COMMON);
         }};
 
         int count = topicDao.getTopicCountByCondition(queryCountMap);
@@ -147,8 +146,10 @@ public class TopicServiceImpl implements TopicService {
     public Page<SimpleTopicVo> queryUserApplyBestTopic(Integer user_id, int currPage, int pageSize) {
         Map queryCountMap = new HashMap(){{
             put("user_id", user_id);
-            put("prop1", TopicConstant.TOPIC_APPLY_APPLYING);
             put("topic_status",TopicConstant.TOPIC_STATUS_NORMAL);
+            put("prop1s", new String[]{TopicConstant.TOPIC_APPLY_AGREE,
+                                        TopicConstant.TOPIC_APPLY_REJECT,
+                                        TopicConstant.TOPIC_APPLY_APPLYING});
         }};
 
         int count = topicDao.getTopicCountByCondition(queryCountMap);
