@@ -54,10 +54,6 @@ public class UserController {
 
     @RequestMapping("/doLogin")
     public String doLogin(String user_account, String user_password, HttpServletRequest request) {
-        // 仅仅做开发测试用
-      /*  user_account = "123456789";
-        user_password = "123456";*/
-
         if (StringUtils.isEmpty(user_account)
                 || StringUtils.isEmpty(user_password)) {
             request.setAttribute("message_login", "用户名或密码为空!");
@@ -65,7 +61,6 @@ public class UserController {
         }
 
         UserEntity user = userService.getUserByAccountAndPassword(user_account, user_password);
-
         if (user == null) {
             request.setAttribute("message_login", "用户名或密码错误!");
             return "user/user_login";
@@ -111,10 +106,6 @@ public class UserController {
             modelAndView.setViewName("user/user_register");
             return modelAndView;
         }
- /*       String point_text,
-        String point_ico,
-        String point_url){
-        String point_button,*/
         PointUtil.initToPoint(modelAndView,
                 "注册成功", PointConstant.POINT_ICO_SUCCESS, "登录", "user/login");
 

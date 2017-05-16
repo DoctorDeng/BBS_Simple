@@ -67,13 +67,6 @@
                             男<input type="radio" id="user_sex_men"  name="user_sex" value="1" >
                             &nbsp;&nbsp;
                             女<input type="radio" id="user_sex_women" name="user_sex" value="2">
-                            <!-- 女-->
-                            <!--  男<input type="radio" name="sex" value="男" >
-                            &nbsp &nbsp女<input type="radio" name="sex" value="女" checked="checked"> -->
-
-                            <!-- 没有性别-->
-                            <!--   男<input type="radio" name="sex" value="男" >
-                            &nbsp &nbsp女<input type="radio" name="sex" value="女"> -->
                         </div>
                         <dl class="form-group">
                             <dt><label for="user_introduction">个性签名</label></dt>

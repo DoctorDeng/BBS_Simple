@@ -19,7 +19,7 @@
 
 <div style="width: 100%;">
     <!--  首页轮播大图 -->
-   <jsp:include page="pages/carouselPicture.jsp"  />
+  <%-- <jsp:include page="pages/carouselPicture.jsp"  />--%>
 
     <div class="container" style="margin-top: 30px;">
         <div class="row">
