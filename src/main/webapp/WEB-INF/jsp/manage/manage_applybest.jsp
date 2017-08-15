@@ -25,7 +25,7 @@
                <%-- <li role="presentation"><a href="#">查看新帖</a></li>--%>
                 <li role="presentation" class="active"><a href="${requestScope.path}/manage/apply/best">申精管理</a></li>
                 <li role="presentation"><a href="${requestScope.path}/manage/user/power">封锁用户</a></li>
-                <li role="presentation"><a href="#">板块管理</a></li>
+                <li role="presentation"><a href="${requestScope.path}/manage/addForum">板块管理</a></li>
             </ul>
         </div>
 

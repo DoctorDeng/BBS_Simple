@@ -29,9 +29,9 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="#">论坛热帖</a></li>
-            <li><a href="#">论坛新帖</a></li>
-            <li><a href="#">精华帖</a></li>
+           <%-- <li><a href="${requestScope.path}/topic/topic/search?type=">论坛热帖</a></li>--%>
+            <li><a href="${requestScope.path}/topic/topic/search?type=all">论坛新帖</a></li>
+            <li><a href="${requestScope.path}/topic/topic/search?type=best">精华帖</a></li>
         </ul>
     </div>
 

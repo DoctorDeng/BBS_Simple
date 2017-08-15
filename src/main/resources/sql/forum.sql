@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50713
 File Encoding         : 65001
 
-Date: 2017-05-16 21:52:40
+Date: 2017-07-27 21:08:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,3 +43,7 @@ CREATE TABLE `forum` (
 -- Records of forum
 -- ----------------------------
 INSERT INTO `forum` VALUES ('1', '公告板块', '公告板块', null, null, '0', '0', null, null, null, null, null, null, null, null, null);
+INSERT INTO `forum` VALUES ('2', '测试板块二', '测试板块二', null, null, '0', '1', null, null, null, null, null, null, null, null, null);
+INSERT INTO `forum` VALUES ('3', '测试板块三', '测试板块三', null, null, '0', '1', null, null, null, null, null, null, null, null, null);
+INSERT INTO `forum` VALUES ('4', '测试板块一', '测试板块一', null, null, '0', '1', null, null, null, null, null, null, null, null, null);
+INSERT INTO `forum` VALUES ('10', '测试板', '', null, null, '0', '1', null, null, null, null, null, null, null, null, null);

@@ -32,9 +32,9 @@ public class Page<T> {
 	private int navigateTotalPage=8; 
 	//所有导航页号
 	private int[] navigatePages;  
-	// 页面存储数据,适用于多天数据
+	// 页面存储数据,适用于多条数据
 	private List<T> resultList;
-	//页面存储数据,适用于一条数据
+	//页面存储数据,适用于单条数据
 	private T result;
 	// 查询数据
 	private Map queryData;

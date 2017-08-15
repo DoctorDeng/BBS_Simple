@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-1">
         </div>
-        <div class="col-md-2 post-head">
+        <div class="col-md-2 post-head" name="post_head">
             <img alt="" class="img-responsive img-circle" src="${requestScope.path}/${param.user_ico_url}"
                  style="margin:1px 1px;width: 120px;height: 120px;margin: 30px auto;"/>
             <span class="">
@@ -30,7 +30,7 @@
                 ${param.user_introduction}
             </span>
         </div>
-        <div class="col-md-8 post-content">
+        <div class="col-md-8 post-content" name="post_content">
             <div class="post-title">
                 <h3 style="margin-left:20px;color:black">[${param.forum_name}]${param.topic_title}</h3>
                 <div style="margin-left:20px">

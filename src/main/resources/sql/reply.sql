@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50713
 File Encoding         : 65001
 
-Date: 2017-05-16 21:52:49
+Date: 2017-07-27 21:08:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,4 +43,19 @@ CREATE TABLE `reply` (
   KEY `PK_reply_user_id` (`user_id`),
   CONSTRAINT `PK_reply_topic_id` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`topic_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `PK_reply_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of reply
+-- ----------------------------
+INSERT INTO `reply` VALUES ('1', '9', '<p>sdsdfasdf</p>', '2017-04-24 20:02:19', '1', null, '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `reply` VALUES ('2', '9', '<p>sdfsdf</p>', '2017-04-24 20:05:04', '1', null, '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `reply` VALUES ('3', '9', '<ol><li>dfgsdfgsdfgsdfgsdfgggggggggggg</li><li>dfgd</li><li>dfg</li></ol>', '2017-04-24 20:09:29', '1', null, '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `reply` VALUES ('4', '9', '<ul><li><strong>dfgdfgsdfg</strong></li></ul>', '2017-04-24 20:09:43', '1', null, '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `reply` VALUES ('5', '9', '<p>asdfasdf</p>', '2017-04-24 20:11:04', '1', null, '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `reply` VALUES ('6', '9', '<p>asdfffffffff</p>', '2017-04-24 20:11:09', '1', null, '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `reply` VALUES ('7', '9', '<p>adsfffffffffffffffffff</p>', '2017-04-24 20:11:15', '1', null, '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `reply` VALUES ('8', '9', '<p>asdfffffffff</p>', '2017-04-24 20:11:34', '1', null, '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `reply` VALUES ('9', '9', '<p>你好</p>', '2017-05-18 15:00:59', '8', null, '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `reply` VALUES ('10', '14', '<p>是的</p>', '2017-05-18 15:01:53', '8', null, '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `reply` VALUES ('11', '15', '<p>第三方时代时代是的</p>', '2017-05-21 16:42:21', '8', null, '0', null, null, null, null, null, null, null, null, null, null);

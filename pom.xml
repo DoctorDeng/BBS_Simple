@@ -24,6 +24,13 @@
 
 	
 	<dependencies>
+		<dependency>
+			<groupId>org.patchca</groupId>
+			<artifactId>patchca</artifactId>
+			<version>0.5.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/patchca-0.5.0.jar</systemPath>
+		</dependency>
 	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -160,6 +167,11 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 		<dependency>
 			<groupId>org.springframework</groupId>

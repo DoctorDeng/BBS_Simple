@@ -184,4 +184,5 @@
         }
     }
 </script>
+<script type="text/javascript" src="${path}/js/topic_detail.js"></script>
 </html>

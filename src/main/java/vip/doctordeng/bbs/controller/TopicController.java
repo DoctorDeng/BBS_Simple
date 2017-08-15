@@ -78,7 +78,7 @@ public class TopicController {
         }
 
         Integer user_id = userEntity.getUser_id();
-        boolean addTopicResult = topicService.addTopic(topic_title, topic_title, user_id, Integer.parseInt(forum_id));
+        boolean addTopicResult = topicService.addTopic(topic_title, topic_content, user_id, Integer.parseInt(forum_id));
 
         if (!addTopicResult) {
             resultMap.put("resultCode", 1);

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50713
 File Encoding         : 65001
 
-Date: 2017-05-16 21:53:07
+Date: 2017-07-27 21:08:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,3 +46,9 @@ CREATE TABLE `user` (
   UNIQUE KEY `UK_user_user_account` (`user_account`) USING BTREE,
   UNIQUE KEY `UK_user_user_email` (`user_email`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '管理员', '管理员 ', '1', '', 'admin@qq.com', '2017-05-22 17:20:41', '0', '2', '0', null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('8', '123456', 'e10adc3949ba59abbe56e057f20f883e', '路人甲2', 'sdfsdfsdf', '2', 'upload/user/ico/ae37f48d-1fd2-47f0-9687-5fccf2c15491.jpg', '123456@qq.com', '2017-05-19 22:09:02', '0', '1', '0', null, null, null, null, null, null, null, null, null, null);
